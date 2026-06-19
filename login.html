@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - ShadowForge</title>
+    <link rel="stylesheet" href="css/style.css">
+    </head>
+
+<body>
+
+    <!-- ==== MINIMAL HEADER - no full nav on auth pages ==== -->
+     <header id="auth-header">
+        <a href="index.html">
+            <div id="logo">⚡ ShadowForge</div>
+        </a>
+     </header>
+
+     <!-- ==== MAIN - centered login form ==== -->
+      <main id="auth-main">
+
+        <section id="login-box">
+
+            <div id="login-heading">
+                <h1>Welcome Back</h1>
+                <p>Login to continue forging your knowlege.</p>
+            </div>
+
+            <form id="login-form" action="#" method="POST">
+
+                <!-- Email Field -->
+                 <div class="form-group">
+                    <label for="login-email">Email Address</label>
+                    <input
+                     type="email"
+                     id="login-email"
+                     name="email"
+                     placeholder="you@university.ac.ug"
+                     required
+                     autocomplete="email">
+                 </div>
+
+                 <!-- Password Field -->
+                  <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input
+                     type="password"
+                     id="login-password"
+                     name="password"
+                     placeholder="Enter your password"
+                     minlength="8"
+                     required
+                     autocomplete="current-password">
+                  </div>
+
+                  <!-- Remember Me -->
+                   <div class="form-group" id="remember-row">
+                    <label id="remember-label">
+                        <input type="checkbox" name="remember" value="yes">
+                        Remember me on this device
+                    </label>
+                </div>
+
+                <!-- Submit -->
+                 <button type="submit" id="login-btn">
+                    Login to ShadowForge
+                 </button>
+
+                 <!-- Forgot Password -->
+                  <p id="forgot-password">
+                    <a href="#">Forgot your password?</a>
+                  </p>
+
+            </form>
+
+            <!-- Switch to Signup -->
+             <div id="auth-switch">
+                <p>Don't have an account? <a href="signup.html">Create one free</a></p>
+             </div>
+
+        </section>
+
+      </main>
+
+      <!-- ==== MINIMAL FOOTER ==== -->
+       <footer id="auth-footer">
+        <p>ShadowForge © 2026 . <a href="#">Privacy Policy</a> . <a href="#">Terms</a></p>
+       </footer>
+</body>
+</html>

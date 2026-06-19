@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account - ShadowForge</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- ==== MINIMAL HEADER ==== -->
+     <header id="auth-header">
+        <a href="index.html">
+            <div id="logo">⚡ ShadowForge</div>
+        </a>
+     </header>
+
+     <!-- ==== MAIN - centered signup form ==== -->
+      <main id="auth-main">
+
+        <section id="signup-box">
+
+            <div id="signup-headng">
+                <h1>Create Your Account</h1>
+                <p>Join ShadowForge. Start forging your knowledge today.</p>
+            </div>
+
+            <form id="signup-form" action="#" method="POST">
+
+                <fieldset>
+                    <legend>Personal Details</legend>
+
+                    <!-- Full Name -->
+                     <div class="form-group">
+                        <label for="full-name">Full Name</label>
+                        <input
+                         type="text"
+                         id="full-name"
+                         name="fullname"
+                         placeholder="Your full name"
+                         minlength="2"
+                         required
+                         autocomplete="name">
+                     </div>
+
+                     <!-- University -->
+                      <div class="form-group">
+                        <label for="university">University</label>
+                        <input
+                         type="text"
+                         id="university"
+                         name="university"
+                         placeholder="e.g. Makerere University"
+                         required>
+                      </div>
+
+                      <!-- Year of Study -->
+                       <div class="form-group">
+                        <label for="year">Year of Study</label>
+                        <select id="year" name="year" required>
+                            <option value="">Select your year</option>
+                            <option value="1">Year 1</option>
+                            <option value="2">Year 2</option>
+                            <option value="3">Year 3</option>
+                            <option value="4">Year 4</option>
+                            <option value="5">Year 5</option>
+                        </select>
+                       </div>
+
+                </fieldset>
+
+                <fieldset>
+                    <legend>Account Details</legend>
+
+                    <!-- Email -->
+                     <div class="form-group">
+                        <label for="signup-email">Email Address</label>
+                        <input
+                         type="email"
+                         id="signup-email"
+                         name="email"
+                         placeholder="you@university.ac.ug"
+                         required
+                         autocomplete="email">
+                     </div>
+
+                     <!--  Password -->
+                       <div class="form-group">
+                       <label for="signup-password">Password</label>
+                       <input 
+                        type="password"
+                        id="signup-password"
+                        name="password"
+                        paceholder="Minimum 8 characters"
+                        minlength="8"
+                        required
+                        autocomplete="new-password">
+                        </div>
+
+                     <!-- Confirm Password -->
+                      <div class="form-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input
+                         type="password"
+                         id="confirm-password"
+                         name="confirm_password"
+                         placeholder="Repeat your password"
+                         minlength="8"
+                         required
+                         autocomplete="new-password">
+                      </div>
+
+                </fieldset>
+
+                <!-- Course interest -->
+                 <fieldset>
+                    <legend>Subjects of interest</legend>
+
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" name="subjects"
+                            value="microeconomics">
+                            Microeconomics
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" name="subjects"
+                            value="statistics">
+                            Statistics
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" name="subjects"
+                            value="Financial Accounting">
+                            Financial Accounting
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" name="subjects"
+                            value="business-law">
+                            Business Law
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" name="subjects"
+                            value="Org . behavior">
+                            Org . behavior
+                        </label>
+                    </div>
+                 </fieldset>
+
+                <!-- Terms Agreement -->
+                 <div class="form-group" id="terms-row">
+                    <label id="terms-label">
+                        <input type="checkbox" name="terms" value="agreed" required>
+                        I agree to the 
+                        <a href="#">Terms of Service</a>
+                        and
+                        <a href="#">Privacy Policy</a> 
+                    </label>
+                 </div>
+
+                 <!-- Submit -->
+                  <button type="submit" id="signup-btn">
+                    Create My Account
+                  </button>
+
+                    
+            </form>
+
+            <!-- Switch to Login -->
+             <div id="auth-switch">
+                <p>Already have an account? <a href=login.html>Login here</a></p>
+             </div>
+
+        </section>
+      </main>
+
+      <!-- ==== MINIMAL FOOTER ==== -->
+       <footer id="auth-footer">
+        <p>ShadowForge © 2026 . <a href=>Privacy Policy</a> . <a href="#">Terms</a></p>
+       </footer>
+</body>
+</html>
