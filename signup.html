@@ -11,14 +11,14 @@
 <body>
 
     <!-- ==== MINIMAL HEADER ==== -->
-     <header id="auth-header">
+    <header id="auth-header">
         <a href="index.html">
             <div id="logo">⚡ ShadowForge</div>
         </a>
-     </header>
+    </header>
 
-     <!-- ==== MAIN - centered signup form ==== -->
-      <main id="auth-main">
+    <!-- ==== MAIN - centered signup form ==== -->
+    <main id="auth-main">
 
         <section id="signup-box">
 
@@ -33,31 +33,21 @@
                     <legend>Personal Details</legend>
 
                     <!-- Full Name -->
-                     <div class="form-group">
+                    <div class="form-group">
                         <label for="full-name">Full Name</label>
-                        <input
-                         type="text"
-                         id="full-name"
-                         name="fullname"
-                         placeholder="Your full name"
-                         minlength="2"
-                         required
-                         autocomplete="name">
-                     </div>
+                        <input type="text" id="full-name" name="fullname" placeholder="Your full name" minlength="2"
+                            required autocomplete="name">
+                    </div>
 
-                     <!-- University -->
-                      <div class="form-group">
+                    <!-- University -->
+                    <div class="form-group">
                         <label for="university">University</label>
-                        <input
-                         type="text"
-                         id="university"
-                         name="university"
-                         placeholder="e.g. Makerere University"
-                         required>
-                      </div>
+                        <input type="text" id="university" name="university" placeholder="e.g. Makerere University"
+                            required>
+                    </div>
 
-                      <!-- Year of Study -->
-                       <div class="form-group">
+                    <!-- Year of Study -->
+                    <div class="form-group">
                         <label for="year">Year of Study</label>
                         <select id="year" name="year" required>
                             <option value="">Select your year</option>
@@ -67,7 +57,7 @@
                             <option value="4">Year 4</option>
                             <option value="5">Year 5</option>
                         </select>
-                       </div>
+                    </div>
 
                 </fieldset>
 
@@ -75,120 +65,99 @@
                     <legend>Account Details</legend>
 
                     <!-- Email -->
-                     <div class="form-group">
+                    <div class="form-group">
                         <label for="signup-email">Email Address</label>
-                        <input
-                         type="email"
-                         id="signup-email"
-                         name="email"
-                         placeholder="you@university.ac.ug"
-                         required
-                         autocomplete="email">
-                     </div>
+                        <input type="email" id="signup-email" name="email" placeholder="you@university.ac.ug" required
+                            autocomplete="email">
+                    </div>
 
-                     <!--  Password -->
-                       <div class="form-group">
-                       <label for="signup-password">Password</label>
-                       <input 
-                        type="password"
-                        id="signup-password"
-                        name="password"
-                        paceholder="Minimum 8 characters"
-                        minlength="8"
-                        required
-                        autocomplete="new-password">
-                        </div>
+                    <!--  Password -->
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" name="password" paceholder="Minimum 8 characters"
+                            minlength="8" required autocomplete="new-password">
+                    </div>
 
-                     <!-- Confirm Password -->
-                      <div class="form-group">
+                    <!-- Confirm Password -->
+                    <div class="form-group">
                         <label for="confirm-password">Confirm Password</label>
-                        <input
-                         type="password"
-                         id="confirm-password"
-                         name="confirm_password"
-                         placeholder="Repeat your password"
-                         minlength="8"
-                         required
-                         autocomplete="new-password">
-                      </div>
+                        <input type="password" id="confirm-password" name="confirm_password"
+                            placeholder="Repeat your password" minlength="8" required autocomplete="new-password">
+                    </div>
 
                 </fieldset>
 
                 <!-- Course interest -->
-                 <fieldset>
+                <fieldset>
                     <legend>Subjects of interest</legend>
 
                     <div class="form-group">
                         <label>
-                            <input type="checkbox" name="subjects"
-                            value="microeconomics">
+                            <input type="checkbox" name="subjects" value="microeconomics">
                             Microeconomics
                         </label>
                     </div>
 
                     <div class="form-group">
                         <label>
-                            <input type="checkbox" name="subjects"
-                            value="statistics">
+                            <input type="checkbox" name="subjects" value="statistics">
                             Statistics
                         </label>
                     </div>
 
                     <div class="form-group">
                         <label>
-                            <input type="checkbox" name="subjects"
-                            value="Financial Accounting">
+                            <input type="checkbox" name="subjects" value="Financial Accounting">
                             Financial Accounting
                         </label>
                     </div>
 
                     <div class="form-group">
                         <label>
-                            <input type="checkbox" name="subjects"
-                            value="business-law">
+                            <input type="checkbox" name="subjects" value="business-law">
                             Business Law
                         </label>
                     </div>
 
                     <div class="form-group">
                         <label>
-                            <input type="checkbox" name="subjects"
-                            value="Org . behavior">
+                            <input type="checkbox" name="subjects" value="Org . behavior">
                             Org . behavior
                         </label>
                     </div>
-                 </fieldset>
+                </fieldset>
 
                 <!-- Terms Agreement -->
-                 <div class="form-group" id="terms-row">
+                <div class="form-group" id="terms-row">
                     <label id="terms-label">
                         <input type="checkbox" name="terms" value="agreed" required>
-                        I agree to the 
+                        I agree to the
                         <a href="#">Terms of Service</a>
                         and
-                        <a href="#">Privacy Policy</a> 
+                        <a href="#">Privacy Policy</a>
                     </label>
-                 </div>
+                </div>
 
-                 <!-- Submit -->
-                  <button type="submit" id="signup-btn">
+                <!-- Submit -->
+                <button type="submit" id="signup-btn">
                     Create My Account
-                  </button>
+                </button>
 
-                    
+
             </form>
 
             <!-- Switch to Login -->
-             <div id="auth-switch">
+            <div id="auth-switch">
                 <p>Already have an account? <a href=login.html>Login here</a></p>
-             </div>
+            </div>
 
         </section>
-      </main>
+    </main>
 
-      <!-- ==== MINIMAL FOOTER ==== -->
-       <footer id="auth-footer">
-        <p>ShadowForge © 2026 . <a href=>Privacy Policy</a> . <a href="#">Terms</a></p>
-       </footer>
+    <!-- ==== MINIMAL FOOTER ==== -->
+    <footer id="auth-footer">
+        <p>ShadowForge &copy; 2026 . <a href=>Privacy Policy</a> . <a href="#">Terms</a></p>
+    </footer>
 </body>
+
 </html>

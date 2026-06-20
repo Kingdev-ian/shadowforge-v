@@ -1,284 +1,284 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0">
-        <title>Leaderboard - ShadowForge</title>
-        <link rel="stylesheet" href="css/style.css">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Leaderboard - ShadowForge</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
 
-    <body>
+<body>
 
-        <!-- ==== NAVIGATION ==== -->
-         <nav>
-            <div id="logo">⚡ ShadowForge</div>
-            <div id="nav-links">
-                <a href="index.html">Dashboard</a>
-                <a href="#">My Courses</a>
-                <a href="leaderboard.html">Leaderboard</a>
-                <a href="login.html">Login</a>
-            </div>
-         </nav>
+    <!-- ==== NAVIGATION ==== -->
+    <nav>
+        <div id="logo">⚡ ShadowForge</div>
+        <div id="nav-links">
+            <a href="index.html">Dashboard</a>
+            <a href="#">My Courses</a>
+            <a href="leaderboard.html">Leaderboard</a>
+            <a href="login.html">Login</a>
+        </div>
+    </nav>
 
-         <!-- ==== MAIN CONTENT ==== -->
-          <main>
+    <!-- ==== MAIN CONTENT ==== -->
+    <main>
 
-            <!-- Page Header -->
-             <header id="page-header">
-                <h1>🏆 Leaderboard</h1>
-                <p>The top scholars on ShadowForge this week</p>
-             </header>
+        <!-- Page Header -->
+        <header id="page-header">
+            <h1>🏆 Leaderboard</h1>
+            <p>The top scholars on ShadowForge this week</p>
+        </header>
 
-             <!-- Filter Section -->
-              <section id="leaderboard-filters">
+        <!-- Filter Section -->
+        <section id="leaderboard-filters">
 
-                <form id="filter-form" action="#" method="GET">
+            <form id="filter-form" action="#" method="GET">
 
-                    <div class="form-group">
-                        <label for="filter-subject">Filter by Subject</label>
-                        <select id="filter-subject" name="subject">
-                            <option value="all">All Subjects</option>
-                            <option value="micro">Microeconomics</option>
-                            <option value="stats">Satistics</option>
-                            <option value="accounting">Financial Accounting</option>
-                            <option value="law">Business Law</option>
-                            <option value="org">Org. Behavior</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="filter-period">Time Period</label>
-                        <select id="filter-period" name="period">
-                            <option value="week">This Week</option>
-                            <option value="month">This Month</option>
-                            <option value="all">All Time</option>
-                        </select>
-                    </div>
-                    
-                    <button type="submit">Apply Filter</button>
-
-                </form>
-
-              </section>
-
-              <!-- Top 3 Podium -->
-               <section id="podium">
-                <h2>Top Scholars</h2>
-
-                <div id="podium-cards">
-
-                    <article class="podium-card" id="second-place">
-                        <p class="podium-position">🥈 2nd</p>
-                        <h3>Aisha K.</h3>
-                        <p class="podium-university">Makerere University</p>
-                        <p class="podium-xp">3,800 XP</p>
-                        <p class="podium-rank">Expert</p>
-                    </article>
-
-                    <article class="podium-card" id="first-place">
-                        <p class="podium-position">🥇 1st</p>
-                        <h3>King M.</h3>
-                        <p class="podium-university">Makerere University</p>
-                        <p class="podium-xp">4,200 XP</p>
-                        <P class="podium-rank">Master</P>
-                    </article>
-
-                    <article class="podium-card" id="third-place">
-                        <p class="podium-position">🥉 3rd</p>
-                        <h3>David O.</h3>
-                        <p class="podium-university">Kyambogo University</p>
-                        <p class="podium-xp">3,400 XP</p>
-                        <p class="podium-rank">Expert</p> 
-                    </article>
-
+                <div class="form-group">
+                    <label for="filter-subject">Filter by Subject</label>
+                    <select id="filter-subject" name="subject">
+                        <option value="all">All Subjects</option>
+                        <option value="micro">Microeconomics</option>
+                        <option value="stats">Satistics</option>
+                        <option value="accounting">Financial Accounting</option>
+                        <option value="law">Business Law</option>
+                        <option value="org">Org. Behavior</option>
+                    </select>
                 </div>
-               </section>
 
-               <!-- Full Leaderboard Table -->
+                <div class="form-group">
+                    <label for="filter-period">Time Period</label>
+                    <select id="filter-period" name="period">
+                        <option value="week">This Week</option>
+                        <option value="month">This Month</option>
+                        <option value="all">All Time</option>
+                    </select>
+                </div>
 
-               <h2>Full Rankings</h2>
+                <button type="submit">Apply Filter</button>
 
-                    <table id="leaderboard-table">
-                        <caption>ShadowForge Weekly Leaderboard - Top Scholars</caption>
+            </form>
 
-                        
-                        
+        </section>
 
-                        <thead>
-                            <tr>
-                                <th>Position</th>
-                                <th>Student</th>
-                                <th>University</th>
-                                <th>Rank</th>
-                                <th>XP</th>
-                                <th>Streak</th>
-                                <th>Subjects</th>
-                            </tr>
-                        </thead>
+        <!-- Top 3 Podium -->
+        <section id="podium">
+            <h2>Top Scholars</h2>
 
-                        <tbody>
+            <div id="podium-cards">
 
-                            <tr class="leaderboard-row top-three">
-                                <td>🥇 1</td>
-                                <td>King M.</td>
-                                <td>Makerere University</td>
-                                <td>Master</td>
-                                <td>4,200 XP</td>
-                                <td>🔥 21 days</td>
-                                <td>5</td>
-                            </tr>
+                <article class="podium-card" id="second-place">
+                    <p class="podium-position">🥈 2nd</p>
+                    <h3>Aisha K.</h3>
+                    <p class="podium-university">Makerere University</p>
+                    <p class="podium-xp">3,800 XP</p>
+                    <p class="podium-rank">Expert</p>
+                </article>
 
-                            <tr class="leaderboard-row top-three">
-                                <td>🥈 2</td>
-                                <td>Aisha K.</td>
-                                <td>Makerere University</td>
-                                <td>Expert</td>
-                                <td>3,800 XP</td>
-                                <td>🔥 18 days</td>
-                                <td>4</td>
-                            </tr>
+                <article class="podium-card" id="first-place">
+                    <p class="podium-position">🥇 1st</p>
+                    <h3>King M.</h3>
+                    <p class="podium-university">Makerere University</p>
+                    <p class="podium-xp">4,200 XP</p>
+                    <P class="podium-rank">Master</P>
+                </article>
 
-                            <tr class="leaderboard-row top-three">
-                                <td>🥉 3</td>
-                                <td>David O.</td>
-                                <td>Kyambogo University</td>
-                                <td>Expert</td>
-                                <td>3,400 XP</td>
-                                <td>🔥 14 days</td>
-                                <td>3</td>
-                            </tr>
+                <article class="podium-card" id="third-place">
+                    <p class="podium-position">🥉 3rd</p>
+                    <h3>David O.</h3>
+                    <p class="podium-university">Kyambogo University</p>
+                    <p class="podium-xp">3,400 XP</p>
+                    <p class="podium-rank">Expert</p>
+                </article>
 
-                            <tr class="leaderboard-row">
-                                <td> 4</td>
-                                <td>Sarah N.</td>
-                                <td>Uganda Christian University</td>
-                                <td>Scholar</td>
-                                <td>2,900 XP</td>
-                                <td>🔥 10 days</td>
-                                <td>3</td>
-                            </tr>
+            </div>
+        </section>
 
-                            <tr class="leaderboard-row">
-                                <td>5</td>
-                                <td>Brian T.</td>
-                                <td>Makerere University</td>
-                                <td>Scholar</td>
-                                <td>2,600 XP</td>
-                                <td>🔥 9 days</td>
-                                <td>2</td>
-                            </tr>
+        <!-- Full Leaderboard Table -->
 
-                            <tr class="leaderboard-row">
-                                <td>6</td>
-                                <td>Grace A.</td>
-                                <td>Nkumba University</td>
-                                <td>Scholar</td>
-                                <td>2,200 XP</td>
-                                <td>🔥 7 days</td>
-                                <td>2</td>
-                            </tr>
+        <h2>Full Rankings</h2>
 
-                            <tr class="leaderboard-row">
-                                <td>7</td>
-                                <td>Moses W.</td>
-                                <td>Kampala International University</td>
-                                <td>Apprentice</td>
-                                <td>1,800 XP</td>
-                                <td>🔥 5 days</td>
-                                <td>2</td>
-                            </tr>
-
-                            <tr class="leaderboard-row">
-                                <td>8</td>
-                                <td>Faith M.</td>
-                                <td>Makerere University</td>
-                                <td>Apprentice</td>
-                                <td>1,400 XP</td>
-                                <td>🔥 4 days</td>
-                                <td>1</td>
-                            </tr>
-
-                            <tr class="leaderboard-row">
-                                <td>9</td>
-                                <td>Joel K.</td>
-                                <td>Uganda Matyrs University</td>
-                                <td>Apprentice</td>
-                                <td>1,100 XP</td>
-                                <td>🔥 3 days</td>
-                                <td>1</td>
-                            </tr>
-
-                            <tr class="leaderboard-row">
-                                <td>10</td>
-                                <td>Ruth B.</td>
-                                <td>Kyambogo University</td>
-                                <td>Apprentice</td>
-                                <td>900 XP</td>
-                                <td>🔥 2 days</td>
-                                <td>1</td>
-                            </tr>
-
-                            <tr class="leaderboard-row">
-                                <td>11</td>
-                                <td>Ian k.</td>
-                                <td>Makerere University</td>
-                                <td>Apprentice</td>
-                                <td>800 XP</td>
-                                <td>🔥 2 days</td>
-                                <td>1</td>
-                            </tr>
-
-                            <tr class="leaderboard-row">
-                                <td>12</td>
-                                <td>Joyce A.</td>
-                                <td>Makerere University</td>
-                                <td>Apprentice</td>
-                                <td>600 XP</td>
-                                <td>🔥 1 day</td>
-                                <td>1</td>
-                            </tr>
-
-                            <tr class="leaderboard-row">
-                                <td>13</td>
-                                <td>Tabitha A.</td>
-                                <td>Makerere University</td>
-                                <td>Apprentice</td>
-                                <td>400 XP</td>
-                                <td>🔥 1 day</td>
-                                <td>1</td>
-                            </tr>
+        <table id="leaderboard-table">
+            <caption>ShadowForge Weekly Leaderboard - Top Scholars</caption>
 
 
-                        </tbody>
 
-                        <tfoot>
-                            <tr>
-                                <td colspan="7">
-                                    Showing top 10 scholars . Updated daily .
-                                    Join the board by completing topics and earning XP
-                                </td>
-                            </tr>
-                        </tfoot>
 
-                    </table>
+            <thead>
+                <tr>
+                    <th>Position</th>
+                    <th>Student</th>
+                    <th>University</th>
+                    <th>Rank</th>
+                    <th>XP</th>
+                    <th>Streak</th>
+                    <th>Subjects</th>
+                </tr>
+            </thead>
 
-                </section>
+            <tbody>
 
-                <!-- Your Position -->
-                 <section id="your-position">
-                    <h2>Your Current Position</h2>
-                    <p>You are ranked <strong>1st</strong> this week.</p>
-                    <p>XP: <strong>4,200</strong> . Streak: <strong>🔥 21days</strong></p>
-                    <a href="index.html">Go to Dashboard</a>
-                 </section>
+                <tr class="leaderboard-row top-three">
+                    <td>🥇 1</td>
+                    <td>King M.</td>
+                    <td>Makerere University</td>
+                    <td>Master</td>
+                    <td>4,200 XP</td>
+                    <td>🔥 21 days</td>
+                    <td>5</td>
+                </tr>
 
-          </main>
-          
-          <!-- ==== FOOTER ==== -->
-           <footer>
-            <p>ShadowForge &copy; 2025 &middot; Forge Your Knowledge</p>
-           </footer>
-    </body>
+                <tr class="leaderboard-row top-three">
+                    <td>🥈 2</td>
+                    <td>Aisha K.</td>
+                    <td>Makerere University</td>
+                    <td>Expert</td>
+                    <td>3,800 XP</td>
+                    <td>🔥 18 days</td>
+                    <td>4</td>
+                </tr>
+
+                <tr class="leaderboard-row top-three">
+                    <td>🥉 3</td>
+                    <td>David O.</td>
+                    <td>Kyambogo University</td>
+                    <td>Expert</td>
+                    <td>3,400 XP</td>
+                    <td>🔥 14 days</td>
+                    <td>3</td>
+                </tr>
+
+                <tr class="leaderboard-row">
+                    <td> 4</td>
+                    <td>Sarah N.</td>
+                    <td>Uganda Christian University</td>
+                    <td>Scholar</td>
+                    <td>2,900 XP</td>
+                    <td>🔥 10 days</td>
+                    <td>3</td>
+                </tr>
+
+                <tr class="leaderboard-row">
+                    <td>5</td>
+                    <td>Brian T.</td>
+                    <td>Makerere University</td>
+                    <td>Scholar</td>
+                    <td>2,600 XP</td>
+                    <td>🔥 9 days</td>
+                    <td>2</td>
+                </tr>
+
+                <tr class="leaderboard-row">
+                    <td>6</td>
+                    <td>Grace A.</td>
+                    <td>Nkumba University</td>
+                    <td>Scholar</td>
+                    <td>2,200 XP</td>
+                    <td>🔥 7 days</td>
+                    <td>2</td>
+                </tr>
+
+                <tr class="leaderboard-row">
+                    <td>7</td>
+                    <td>Moses W.</td>
+                    <td>Kampala International University</td>
+                    <td>Apprentice</td>
+                    <td>1,800 XP</td>
+                    <td>🔥 5 days</td>
+                    <td>2</td>
+                </tr>
+
+                <tr class="leaderboard-row">
+                    <td>8</td>
+                    <td>Faith M.</td>
+                    <td>Makerere University</td>
+                    <td>Apprentice</td>
+                    <td>1,400 XP</td>
+                    <td>🔥 4 days</td>
+                    <td>1</td>
+                </tr>
+
+                <tr class="leaderboard-row">
+                    <td>9</td>
+                    <td>Joel K.</td>
+                    <td>Uganda Matyrs University</td>
+                    <td>Apprentice</td>
+                    <td>1,100 XP</td>
+                    <td>🔥 3 days</td>
+                    <td>1</td>
+                </tr>
+
+                <tr class="leaderboard-row">
+                    <td>10</td>
+                    <td>Ruth B.</td>
+                    <td>Kyambogo University</td>
+                    <td>Apprentice</td>
+                    <td>900 XP</td>
+                    <td>🔥 2 days</td>
+                    <td>1</td>
+                </tr>
+
+                <tr class="leaderboard-row">
+                    <td>11</td>
+                    <td>Ian k.</td>
+                    <td>Makerere University</td>
+                    <td>Apprentice</td>
+                    <td>800 XP</td>
+                    <td>🔥 2 days</td>
+                    <td>1</td>
+                </tr>
+
+                <tr class="leaderboard-row">
+                    <td>12</td>
+                    <td>Joyce A.</td>
+                    <td>Makerere University</td>
+                    <td>Apprentice</td>
+                    <td>600 XP</td>
+                    <td>🔥 1 day</td>
+                    <td>1</td>
+                </tr>
+
+                <tr class="leaderboard-row">
+                    <td>13</td>
+                    <td>Tabitha A.</td>
+                    <td>Makerere University</td>
+                    <td>Apprentice</td>
+                    <td>400 XP</td>
+                    <td>🔥 1 day</td>
+                    <td>1</td>
+                </tr>
+
+
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <td colspan="7">
+                        Showing top 10 scholars . Updated daily .
+                        Join the board by completing topics and earning XP
+                    </td>
+                </tr>
+            </tfoot>
+
+        </table>
+
+        </section>
+
+        <!-- Your Position -->
+        <section id="your-position">
+            <h2>Your Current Position</h2>
+            <p>You are ranked <strong>1st</strong> this week.</p>
+            <p>XP: <strong>4,200</strong> . Streak: <strong>🔥 21days</strong></p>
+            <a href="index.html">Go to Dashboard</a>
+        </section>
+
+    </main>
+
+    <!-- ==== FOOTER ==== -->
+    <footer>
+        <p>ShadowForge &copy; 2026 &middot; Forge Your Knowledge</p>
+    </footer>
+</body>
 
 </html>
