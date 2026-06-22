@@ -1,0 +1,299 @@
+
+
+/* ── GOOGLE FONTS IMPORT ── */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600&display=swap');
+
+
+/* ============================================
+   SHADOWFORGE — MAIN STYLESHEET
+   Started: Day 10
+   ============================================ */
+
+/* ── DESIGN TOKENS ── */
+:root {
+    /* Backgrounds */
+    --bg-void: #020408;
+    --bg-deep: #060d14;
+    --bg-surface: #0a1628;
+    --bg-card: #0d1f35;
+    --bg-card-hover: #112540;
+
+    /* Neon Accent Colors */
+    --neon-cyan: #00d4ff;
+    --neon-purple: #7b2fff;
+    --neon-gold: #ffd700;
+    --neon-green: #00ff88;
+    --neon-red: #ff3366;
+
+    /* Text Colors */
+    --text-primary: #e8f4ff;
+    --text-secondary: #7a9bb5;
+    --text-dim: #3a5570;
+
+    /* Borders */
+    --border-dim: #0f2a40;
+
+    /* Typography */
+    --font-display: 'Orbitron', monospace;
+    --font-body: 'Rajdhani', sans-serif;
+
+    /* Spacing */
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 40px;
+}
+
+/* ── RESET & BASE ── */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg-void);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+
+/* ── TYPOGRAPHY ── */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text-primary);
+}
+
+h1 {
+    font-size: clamp(24px, 5vw, 42px);
+}
+
+h2 {
+    font-size: clamp(18px, 4vw, 28px);
+}
+
+h3 {
+    font-size: clamp(14px, 3vw, 20px);
+}
+
+p {
+    color: var(--text-secondary);
+    font-size: clamp(14px, 2.5vw, 16px);
+    line-height: 1.8;
+}
+
+a {
+    color: var(--neon-cyan);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+a:hover {
+    opacity: 0.8;
+}
+
+/* ── NAVIGATION ── */
+nav {
+    background: rgba(2, 4, 8, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-dim);
+    padding: 0 var(--space-md);
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+#logo {
+    font-family: var(--font-display);
+    font-size: clamp(14px, 4vw, 18px);
+    font-weight: 900;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 20px var(--neon-cyan);
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+#nav-links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+#nav-links a {
+    color: var(--text-secondary);
+    font-family: var(--font-body);
+    font-size: 14px;
+    letter-spacing: 1px;
+    transition: color 0.2s ease;
+}
+
+#nav-links a:hover {
+    color: var(--neon-cyan);
+}
+
+/* ── MAIN LAYOUT ── */
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: var(--space-xl) var(--space-md);
+}
+
+/* ── HERO SECTION ── */
+#hero {
+    margin-bottom: var(--space-xl);
+}
+
+#hero h1 {
+    margin-bottom: var(--space-sm);
+}
+
+#hero p {
+    margin-bottom: var(--space-lg);
+}
+
+/* ── BUTTONS ── */
+button,
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    background: rgba(0, 212, 255, 0.1);
+    border: 1px solid var(--neon-cyan);
+    border-radius: 10px;
+    padding: 12px 24px;
+    font-family: var(--font-display);
+    font-size: clamp(10px, 2.5vw, 12px);
+    font-weight: 700;
+    color: var(--neon-cyan);
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: all 0.25s ease;
+}
+
+button:hover,
+.btn:hover {
+    background: rgba(0, 212, 255, 0.2);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+/* ── COURSE CARDS ── */
+#courses {
+    margin-top: var(--space-xl);
+}
+
+#courses h2 {
+    margin-bottom: var(--space-lg);
+    color: var(--text-primary);
+    letter-spacing: 1px;
+}
+
+.course-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-dim);
+    border-radius: 16px;
+    padding: var(--space-lg);
+    margin-bottom: var(--space-md);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.course-card:hover {
+    background: var(--bg-card-hover);
+    border-color: rgba(0, 212, 255, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0, 212, 255, 0.1);
+}
+
+.course-card h3 {
+    margin-bottom: var(--space-sm);
+    color: var(--text-primary);
+}
+
+.course-card p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-sm);
+}
+
+.course-card.coming-soon {
+    opacity: 0.4;
+    cursor: default;
+    pointer-events: none;
+}
+
+/* ── FOOTER ── */
+footer {
+    text-align: center;
+    padding: var(--space-xl) var(--space-md);
+    border-top: 1px solid var(--border-dim);
+    margin-top: var(--space-xl);
+}
+
+footer p {
+    font-size: 13px;
+    color: var(--text-dim);
+}
+
+/* ── SKIP LINK ── */
+#skip-link {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: var(--neon-cyan);
+    color: var(--bg-void);
+    padding: var(--space-sm) var(--space-md);
+    font-weight: 700;
+    z-index: 9999;
+    transition: top 0.2s;
+}
+
+#skip-link:focus {
+    top: 0;
+}
+
+/* ── BREADCRUMB ── */
+#breadcrumb {
+    padding: var(--space-md);
+    font-size: 12px;
+    font-family: var(--font-display);
+    letter-spacing: 1px;
+    border-bottom: none;
+    background: transparent;
+    height: auto;
+    justify-content: flex-start;
+    gap: var(--space-sm);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+#breadcrumb a {
+    color: var(--text-dim);
+}
+
+#breadcrumb a:hover {
+    color: var(--neon-cyan);
+}
+
+#breadcrumb span {
+    color: var(--text-dim);
+}
