@@ -2044,3 +2044,289 @@ footer p {
     white-space: nowrap;
     flex-shrink: 0;
 }
+
+/* ══════════════════════════════════════════
+   RESPONSIVE DESIGN — MOBILE FIRST
+   Day 15
+══════════════════════════════════════════ */
+
+/* ── MOBILE BASE — default for all screens ── */
+
+/* Nav mobile */
+#nav-links {
+    display: none;
+}
+
+#hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 8px;
+}
+
+#hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--neon-cyan);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Mobile nav open state — JavaScript adds this class */
+#nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: rgba(2, 4, 8, 0.98);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-dim);
+    padding: 20px;
+    gap: 16px;
+    z-index: 99;
+}
+
+/* Rank card — stack on mobile */
+.rank-card {
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+}
+
+.xp-bar-wrap {
+    grid-column: 1 / -1;
+}
+
+/* Main padding — tighter on mobile */
+main {
+    padding: var(--space-lg) var(--space-md);
+}
+
+/* Hero — tighter on mobile */
+#hero {
+    padding: 40px 0 28px;
+}
+
+/* Login and signup boxes — full width on mobile */
+#login-box,
+#signup-box {
+    padding: 28px 20px;
+}
+
+/* Leaderboard table — scrollable on mobile */
+#leaderboard-table-section {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+#leaderboard-table {
+    min-width: 600px;
+}
+
+/* Podium cards — stack on mobile */
+#podium-cards {
+    align-items: stretch;
+}
+
+.podium-card {
+    max-width: 100%;
+}
+
+#first-place {
+    padding-top: 24px;
+    order: -1;
+}
+
+/* Quiz actions — stack on mobile */
+#quiz-actions {
+    flex-direction: column;
+}
+
+/* Topic node — adjust padding on mobile */
+.topic-node {
+    padding: 14px 16px;
+    gap: 12px;
+}
+
+.node-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+}
+
+/* ── TABLET — 600px and above ── */
+@media (min-width: 600px) {
+
+    /* Show nav links, hide hamburger */
+    #nav-links {
+        display: flex;
+    }
+
+    #hamburger {
+        display: none;
+    }
+
+    /* Nav padding */
+    nav {
+        padding: 0 32px;
+    }
+
+    /* Main padding */
+    main {
+        padding: var(--space-xl) var(--space-lg);
+    }
+
+    /* Rank card — back to three columns */
+    .rank-card {
+        grid-template-columns: auto 1fr auto;
+        grid-template-rows: auto;
+    }
+
+    .xp-bar-wrap {
+        grid-column: auto;
+    }
+
+    /* Login box — more padding */
+    #login-box,
+    #signup-box {
+        padding: 40px;
+    }
+
+    /* Podium first place back to center */
+    #first-place {
+        order: 0;
+        padding-top: 32px;
+    }
+
+    /* Quiz actions side by side */
+    #quiz-actions {
+        flex-direction: row;
+    }
+
+    /* Hero padding */
+    #hero {
+        padding: 60px 0 40px;
+    }
+
+}
+
+/* ── DESKTOP — 900px and above ── */
+@media (min-width: 900px) {
+
+    /* Nav padding */
+    nav {
+        padding: 0 40px;
+    }
+
+    /* Main max width and padding */
+    main {
+        padding: var(--space-xl) var(--space-xl);
+        max-width: 960px;
+        margin: 0 auto;
+    }
+
+    /* Larger nav links gap */
+    #nav-links {
+        gap: 32px;
+    }
+
+    /* Topic path wider on desktop */
+    .topic-path {
+        max-width: 600px;
+    }
+
+    /* Leaderboard table — no scroll needed */
+    #leaderboard-table {
+        min-width: unset;
+    }
+
+    /* Bigger hero */
+    #hero {
+        padding: 80px 0 48px;
+    }
+
+}
+
+/* ── LARGE DESKTOP — 1200px and above ── */
+@media (min-width: 1200px) {
+
+    main {
+        max-width: 1100px;
+    }
+
+    .courses-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+
+}
+
+/* Ensure all interactive elements meet touch target minimum */
+button,
+a,
+input,
+select,
+label {
+    min-height: 44px;
+}
+
+/* Nav links specifically */
+#nav-links a {
+    padding: 10px 4px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+}
+
+/* ── FIELDSET AND LEGEND ── */
+fieldset {
+    border: 1px solid var(--border-dim);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 24px;
+}
+
+legend {
+    font-family: var(--font-display);
+    font-size: 11px;
+    color: var(--neon-cyan);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 0 8px;
+}
+
+/* ── CHECKBOXES ── */
+input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    min-height: unset;
+    accent-color: var(--neon-cyan);
+    cursor: pointer;
+    flex-shrink: 0;
+    margin: 0;
+}
+
+#remember-label,
+#terms-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    min-height: unset;
+}
+
+
+/* ── CHECKBOX ROWS ── */
+#remember-row,
+#terms-row {
+    margin-bottom: 24px;
+}
+
+#remember-row label,
+#terms-row label {
+    min-height: unset;
+}
