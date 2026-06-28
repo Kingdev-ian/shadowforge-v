@@ -3505,3 +3505,413 @@ body::before {
     border: 1px solid var(--rank-master-color);
     box-shadow: var(--glow-gold-sm);
 }
+
+
+
+/* ══════════════════════════════════════════
+   DAY 20 — BUTTON SYSTEM & INTERACTIVE ELEMENTS
+══════════════════════════════════════════ */
+
+/* ── BUTTON BASE RESET ── */
+button {
+    appearance: none;
+    -webkit-appearance: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    transition: var(--transition-base);
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/* ── RIPPLE EFFECT — click feedback ── */
+button::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center,
+            rgba(255, 255, 255, 0.15),
+            transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+button:active::after {
+    opacity: 1;
+}
+
+/* ══════════════════════════════════════════
+   BUTTON VARIANTS
+══════════════════════════════════════════ */
+
+/* ── PRIMARY BUTTON ── */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    background: linear-gradient(135deg,
+            rgba(0, 212, 255, 0.15),
+            rgba(123, 47, 255, 0.15));
+    border: 1px solid var(--neon-cyan);
+    border-radius: var(--btn-radius);
+    padding: var(--btn-padding);
+    font-size: var(--btn-font-size);
+    color: var(--neon-cyan);
+    min-height: 44px;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg,
+            rgba(0, 212, 255, 0.25),
+            rgba(123, 47, 255, 0.25));
+    box-shadow:
+        var(--glow-cyan-sm),
+        var(--glow-cyan-md);
+    transform: translateY(-2px);
+}
+
+.btn-primary:active {
+    transform: translateY(0px);
+    box-shadow: var(--glow-cyan-sm);
+}
+
+.btn-primary:focus-visible {
+    outline: 2px solid var(--neon-cyan);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.2);
+}
+
+/* ── SECONDARY BUTTON ── */
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-dim);
+    border-radius: var(--btn-radius);
+    padding: var(--btn-padding);
+    font-size: var(--btn-font-size);
+    color: var(--text-secondary);
+    min-height: 44px;
+}
+
+.btn-secondary:hover {
+    background: var(--bg-card);
+    border-color: var(--text-secondary);
+    color: var(--text-primary);
+    transform: translateY(-2px);
+}
+
+.btn-secondary:active {
+    transform: translateY(0px);
+}
+
+.btn-secondary:focus-visible {
+    outline: 2px solid var(--text-secondary);
+    outline-offset: 3px;
+}
+
+/* ── GHOST BUTTON ── */
+.btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    background: transparent;
+    border: none;
+    border-radius: var(--btn-radius);
+    padding: var(--btn-padding);
+    font-size: var(--btn-font-size);
+    color: var(--text-secondary);
+    min-height: 44px;
+}
+
+.btn-ghost:hover {
+    background: var(--bg-surface);
+    color: var(--text-primary);
+}
+
+.btn-ghost:focus-visible {
+    outline: 2px solid var(--border-dim);
+    outline-offset: 3px;
+}
+
+/* ── DANGER BUTTON ── */
+.btn-danger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    background: rgba(255, 51, 102, 0.1);
+    border: 1px solid var(--border-red);
+    border-radius: var(--btn-radius);
+    padding: var(--btn-padding);
+    font-size: var(--btn-font-size);
+    color: var(--neon-red);
+    min-height: 44px;
+}
+
+.btn-danger:hover {
+    background: rgba(255, 51, 102, 0.2);
+    box-shadow: var(--glow-red-sm);
+    transform: translateY(-2px);
+}
+
+/* ── BUTTON SIZES ── */
+.btn-sm {
+    padding: var(--space-1) var(--space-3);
+    font-size: 10px;
+    min-height: 32px;
+    border-radius: var(--radius-sm);
+}
+
+.btn-lg {
+    padding: var(--space-4) var(--space-8);
+    font-size: var(--text-sm);
+    min-height: 54px;
+    border-radius: var(--radius-lg);
+}
+
+/* ── DISABLED STATE — all buttons ── */
+button:disabled,
+.btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+    pointer-events: none;
+}
+
+/* ── LOADING STATE ── */
+.btn-loading {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.btn-loading::before {
+    content: '';
+    width: 14px;
+    height: 14px;
+    border: 2px solid currentColor;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    margin-right: var(--space-2);
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ══════════════════════════════════════════
+   LINK STYLES
+══════════════════════════════════════════ */
+
+/* Default link */
+a {
+    color: var(--neon-cyan);
+    text-decoration: none;
+    transition: var(--transition-fast);
+    position: relative;
+}
+
+/* Underline animation on hover */
+a.link-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--neon-cyan);
+    transition: width 0.3s ease;
+}
+
+a.link-underline:hover::after {
+    width: 100%;
+}
+
+a:focus-visible {
+    outline: 2px solid var(--neon-cyan);
+    outline-offset: 3px;
+    border-radius: 3px;
+}
+
+/* ══════════════════════════════════════════
+   INPUT INTERACTIVE STATES
+══════════════════════════════════════════ */
+
+input,
+select,
+textarea {
+    transition: var(--transition-fast);
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+    border-color: var(--text-dim);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--neon-cyan);
+    box-shadow:
+        0 0 0 3px rgba(0, 212, 255, 0.1),
+        var(--glow-cyan-sm);
+    background: var(--bg-card);
+}
+
+input:invalid:not(:placeholder-shown) {
+    border-color: var(--neon-red);
+    box-shadow: 0 0 0 3px rgba(255, 51, 102, 0.1);
+}
+
+input:valid:not(:placeholder-shown) {
+    border-color: var(--neon-green);
+}
+
+/* ══════════════════════════════════════════
+   CARD INTERACTIVE STATES
+══════════════════════════════════════════ */
+
+.course-card {
+    transition: var(--transition-base);
+}
+
+.course-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--subject-color, var(--border-cyan));
+    box-shadow:
+        0 0 20px color-mix(in srgb,
+            var(--subject-color, var(--neon-cyan)) 15%,
+            transparent),
+        0 16px 40px rgba(0, 0, 0, 0.4);
+}
+
+.course-card:active {
+    transform: translateY(-2px);
+}
+
+/* ══════════════════════════════════════════
+   TOPIC NODE INTERACTIVE STATES
+══════════════════════════════════════════ */
+
+.topic-node {
+    transition: var(--transition-base);
+}
+
+.topic-node:hover:not(.locked-node) {
+    transform: translateX(6px);
+    border-color: var(--border-cyan);
+    box-shadow: var(--glow-cyan-sm);
+}
+
+.topic-node:active:not(.locked-node) {
+    transform: translateX(3px);
+}
+
+/* ══════════════════════════════════════════
+   QUIZ OPTION INTERACTIVE STATES
+══════════════════════════════════════════ */
+
+.answer-options label {
+    transition: var(--transition-fast);
+    cursor: pointer;
+}
+
+.answer-options label:hover {
+    border-color: var(--border-cyan);
+    background: var(--bg-card);
+    color: var(--neon-cyan);
+    transform: translateX(4px);
+}
+
+.answer-options label:has(input:checked) {
+    border-color: var(--neon-cyan);
+    background: rgba(0, 212, 255, 0.08);
+    color: var(--neon-cyan);
+}
+
+/* ══════════════════════════════════════════
+   LEADERBOARD ROW INTERACTIVE STATES
+══════════════════════════════════════════ */
+
+.leaderboard-row {
+    transition: var(--transition-fast);
+    cursor: default;
+}
+
+.leaderboard-row:hover td {
+    background: var(--bg-card);
+    color: var(--text-primary);
+}
+
+.leaderboard-row:hover td:first-child {
+    color: var(--neon-cyan);
+}
+
+/* ══════════════════════════════════════════
+   NAV LINK INTERACTIVE STATES
+══════════════════════════════════════════ */
+
+#nav-links a {
+    transition: var(--transition-fast);
+    padding: var(--space-2) var(--space-1);
+    border-radius: var(--radius-sm);
+}
+
+#nav-links a:hover {
+    color: var(--neon-cyan);
+    text-shadow: var(--glow-cyan-sm);
+}
+
+#nav-links a:focus-visible {
+    outline: 2px solid var(--neon-cyan);
+    outline-offset: 3px;
+}
+
+/* ══════════════════════════════════════════
+   HAMBURGER INTERACTIVE STATES
+══════════════════════════════════════════ */
+
+#hamburger {
+    transition: var(--transition-fast);
+    border-radius: var(--radius-sm);
+    padding: var(--space-2);
+}
+
+#hamburger:hover span {
+    background: var(--neon-cyan);
+    box-shadow: var(--glow-cyan-sm);
+}
+
+#hamburger:focus-visible {
+    outline: 2px solid var(--neon-cyan);
+    outline-offset: 3px;
+}
+
+/* Hamburger open state animation */
+#hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+#hamburger.open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+#hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
