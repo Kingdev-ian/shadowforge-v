@@ -3030,3 +3030,279 @@ footer p {
     color: var(--text-dim);
     text-transform: uppercase;
 }
+
+/* ══════════════════════════════════════════
+   DAY 18 — COLOR & GLOW SYSTEM
+══════════════════════════════════════════ */
+
+/* ── BACKGROUND EFFECTS ── */
+
+/* Main body — radial spotlight from top */
+body {
+    background:
+        radial-gradient(ellipse at 50% -20%,
+            rgba(0, 212, 255, 0.06) 0%,
+            transparent 60%),
+        var(--bg-void);
+}
+
+/* Subtle grid overlay on main content areas */
+main {
+    background-image:
+        linear-gradient(rgba(15, 42, 64, 0.3) 1px,
+            transparent 1px),
+        linear-gradient(90deg,
+            rgba(15, 42, 64, 0.3) 1px,
+            transparent 1px);
+    background-size: 40px 40px;
+}
+
+/* ── GLOW UTILITY CLASSES ── */
+
+/* Cyan glow */
+.glow-cyan {
+    box-shadow:
+        0 0 10px rgba(0, 212, 255, 0.4),
+        0 0 30px rgba(0, 212, 255, 0.2);
+}
+
+/* Purple glow */
+.glow-purple {
+    box-shadow:
+        0 0 10px rgba(123, 47, 255, 0.4),
+        0 0 30px rgba(123, 47, 255, 0.2);
+}
+
+/* Gold glow */
+.glow-gold {
+    box-shadow:
+        0 0 10px rgba(255, 215, 0, 0.4),
+        0 0 30px rgba(255, 215, 0, 0.15);
+}
+
+/* Green glow — success */
+.glow-green {
+    box-shadow:
+        0 0 10px rgba(0, 255, 136, 0.4),
+        0 0 30px rgba(0, 255, 136, 0.15);
+}
+
+/* Red glow — error */
+.glow-red {
+    box-shadow:
+        0 0 10px rgba(255, 51, 102, 0.4),
+        0 0 30px rgba(255, 51, 102, 0.15);
+}
+
+/* ── GRADIENT UTILITIES ── */
+
+.gradient-cyan-purple {
+    background: linear-gradient(135deg,
+            var(--neon-cyan),
+            var(--neon-purple));
+}
+
+.gradient-surface {
+    background: linear-gradient(135deg,
+            var(--bg-card),
+            var(--bg-surface));
+}
+
+/* ── NEON BORDER SYSTEM ── */
+
+.border-cyan {
+    border: 1px solid var(--neon-cyan);
+    box-shadow:
+        0 0 10px rgba(0, 212, 255, 0.2),
+        inset 0 0 10px rgba(0, 212, 255, 0.05);
+}
+
+.border-purple {
+    border: 1px solid var(--neon-purple);
+    box-shadow:
+        0 0 10px rgba(123, 47, 255, 0.2),
+        inset 0 0 10px rgba(123, 47, 255, 0.05);
+}
+
+.border-gold {
+    border: 1px solid var(--neon-gold);
+    box-shadow:
+        0 0 10px rgba(255, 215, 0, 0.2),
+        inset 0 0 10px rgba(255, 215, 0, 0.05);
+}
+
+/* ── CARD GLOW STATES ── */
+
+/* Active card — currently selected */
+.card-active {
+    border-color: var(--neon-cyan);
+    box-shadow:
+        0 0 20px rgba(0, 212, 255, 0.2),
+        0 0 60px rgba(0, 212, 255, 0.08),
+        inset 0 0 20px rgba(0, 212, 255, 0.05);
+}
+
+/* Success card — completed */
+.card-success {
+    border-color: rgba(0, 255, 136, 0.4);
+    box-shadow:
+        0 0 15px rgba(0, 255, 136, 0.1);
+}
+
+/* Error card — wrong answer */
+.card-error {
+    border-color: rgba(255, 51, 102, 0.4);
+    box-shadow:
+        0 0 15px rgba(255, 51, 102, 0.1);
+}
+
+/* ── IMPROVED NAV GLOW ── */
+nav {
+    box-shadow: 0 1px 30px rgba(0, 0, 0, 0.5);
+}
+
+#logo {
+    text-shadow:
+        0 0 10px var(--neon-cyan),
+        0 0 30px rgba(0, 212, 255, 0.4);
+}
+
+/* ── IMPROVED COURSE CARDS ── */
+.course-card:hover {
+    border-color: rgba(0, 212, 255, 0.5);
+    box-shadow:
+        0 0 20px rgba(0, 212, 255, 0.12),
+        0 12px 40px rgba(0, 0, 0, 0.4),
+        inset 0 0 20px rgba(0, 212, 255, 0.03);
+    transform: translateY(-4px);
+}
+
+/* ── IMPROVED BUTTONS ── */
+button:hover,
+.btn:hover {
+    box-shadow:
+        0 0 20px rgba(0, 212, 255, 0.4),
+        0 0 60px rgba(0, 212, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+/* ── XP BAR GLOW ── */
+.xp-fill {
+    background: linear-gradient(90deg,
+            var(--neon-cyan),
+            var(--neon-purple));
+    box-shadow:
+        0 0 10px var(--neon-cyan),
+        0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+/* ── ACTIVE NODE PULSE ── */
+@keyframes nodePulse {
+
+    0%,
+    100% {
+        box-shadow:
+            0 0 8px rgba(0, 212, 255, 0.4),
+            0 0 20px rgba(0, 212, 255, 0.2);
+    }
+
+    50% {
+        box-shadow:
+            0 0 16px rgba(0, 212, 255, 0.8),
+            0 0 40px rgba(0, 212, 255, 0.4);
+    }
+}
+
+.node-icon.active {
+    animation: nodePulse 2s ease-in-out infinite;
+}
+
+/* ── RANK CARD GLOW ── */
+.rank-card {
+    box-shadow:
+        0 0 30px rgba(0, 212, 255, 0.05),
+        inset 0 0 30px rgba(0, 212, 255, 0.02);
+}
+
+.rank-badge {
+    box-shadow:
+        0 0 20px rgba(0, 212, 255, 0.3),
+        inset 0 0 10px rgba(0, 212, 255, 0.1);
+}
+
+/* ── FIRST PLACE PODIUM GLOW ── */
+#first-place {
+    box-shadow:
+        0 0 30px rgba(255, 215, 0, 0.15),
+        inset 0 0 20px rgba(255, 215, 0, 0.05);
+}
+
+/* ── QUIZ FEEDBACK COLORS ── */
+.feedback-correct {
+    background: rgba(0, 255, 136, 0.08);
+    border: 1px solid rgba(0, 255, 136, 0.4);
+    border-radius: 10px;
+    padding: 14px 18px;
+    color: var(--neon-green);
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.1);
+}
+
+.feedback-wrong {
+    background: rgba(255, 51, 102, 0.08);
+    border: 1px solid rgba(255, 51, 102, 0.4);
+    border-radius: 10px;
+    padding: 14px 18px;
+    color: var(--neon-red);
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: 0 0 15px rgba(255, 51, 102, 0.1);
+}
+
+/* ── COMING SOON CARD ── */
+.course-card.coming-soon {
+    background: linear-gradient(135deg,
+            var(--bg-card),
+            var(--bg-surface));
+    opacity: 0.4;
+}
+
+/* ── SCANLINE OVERLAY ── */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(0deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 212, 255, 0.008) 2px,
+            rgba(0, 212, 255, 0.008) 4px);
+    pointer-events: none;
+    z-index: 1000;
+}
+
+/* ── SELECTION COLOR ── */
+::selection {
+    background: rgba(0, 212, 255, 0.3);
+    color: var(--text-primary);
+}
+
+/* ── SCROLLBAR STYLING ── */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-void);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-dim);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--neon-cyan);
+}
