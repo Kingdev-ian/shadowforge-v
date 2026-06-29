@@ -67,111 +67,206 @@
 
 
   <!-- ===== MAIN CONTENT ===== -->
-  <main id="main-content">
+  <main>
 
-    <!-- Hero Section -->
+    <!-- ===== HERO ===== -->
     <section id="hero">
-  <div class="text-eyebrow animate-in">⚡ Active Scholar</div>
-  <h1 class="animate-in delay-1">
-    Welcome Back, <span class="text-neon">King.</span>
-  </h1>
-  <p class="animate-in delay-2">
-    Your knowledge forge awaits. Pick up where you left off.
-  </p>
-  <button class="btn-primary btn-lg animate-in delay-3">
-    ⚡ Continue Learning
-  </button>
-</section>
+      <div class="text-eyebrow animate-in">⚡ Active Scholar</div>
+      <h1 class="animate-in delay-1">
+        Welcome Back, <span class="text-neon">King.</span>
+      </h1>
+      <p class="animate-in delay-2">
+        Your knowledge forge awaits. Pick up where you left off.
+      </p>
+      <button class="btn-primary btn-lg animate-in delay-3">
+        ⚡ Continue Learning
+      </button>
+    </section>
 
-    <!-- Add this inside <main> above the courses section -->
-    <div class="rank-card">
+    <!-- ===== STATS GRID ===== -->
+    <div class="stats-grid animate-in delay-2">
+
+      <div class="stat-card">
+        <div class="stat-card-icon">⚡</div>
+        <div class="stat-card-value">1,240</div>
+        <div class="stat-card-label">Total XP</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-card-icon">🔥</div>
+        <div class="stat-card-value">7</div>
+        <div class="stat-card-label">Day Streak</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-card-icon">📚</div>
+        <div class="stat-card-value">4</div>
+        <div class="stat-card-label">Topics Done</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-card-icon">🏆</div>
+        <div class="stat-card-value">#1</div>
+        <div class="stat-card-label">This Week</div>
+      </div>
+
+    </div>
+
+    <!-- ===== RANK CARD ===== -->
+    <div class="rank-card animate-in delay-3">
       <div class="rank-badge">🧠</div>
       <div class="rank-info">
         <div class="rank-label">Current Rank</div>
         <div class="rank-name">SCHOLAR</div>
         <div class="rank-next">Next: Expert</div>
       </div>
-      <div class="xp-bar-wrap">
-        <div class="xp-bar-label">
-          <span>1,240 XP</span>
-          <span>2,000 XP</span>
+      <div class="xp-progress-wrap">
+        <div class="xp-progress-header">
+          <span class="xp-progress-label">Progress</span>
+          <span class="xp-progress-value">1,240 / 2,000 XP</span>
         </div>
-        <div class="xp-bar">
-          <div class="xp-fill" style="width: 62%"></div>
+        <div class="xp-bar-track">
+          <div class="xp-bar-fill" style="width: 62%"></div>
         </div>
-        <div class="xp-hint">760 XP to Expert rank</div>
+        <div class="xp-progress-footer">
+          <span>Scholar</span>
+          <span>760 XP to Expert</span>
+        </div>
       </div>
     </div>
 
-    <!-- Courses Section -->
+    <!-- ===== STREAK WIDGET ===== -->
+    <div class="streak-widget animate-in delay-4">
+      <div class="streak-icon">🔥</div>
+      <div class="streak-info">
+        <div class="streak-count">7</div>
+        <div class="streak-label">Day Streak</div>
+      </div>
+      <div class="streak-best">
+        <div style="color: var(--text-dim); font-family: var(--font-mono); font-size: 10px;">
+          Best: 14 days
+        </div>
+        <div style="color: var(--text-dim); font-family: var(--font-mono); font-size: 10px;">
+          Keep it up!
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== COURSES ===== -->
     <section id="courses">
       <div class="section-header">
         <h2>YOUR COURSES</h2>
         <div class="section-line"></div>
       </div>
+      
+        <!-- your existing course cards here -->
 
-      <div class="courses-grid">
+        <div class="courses-grid">
 
-        <div class="course-card" data-course-id="microeconomics" style="--subject-color: var(--subject-micro-color)">
-          <h3>📈 Microeconomics</h3>
-          <span class="rank-tag rank-badge-scholar">◈ SCHOLAR</span>
-          <p>Level 3 · Scholar Rank</p>
-          <p>Progress: 40%</p>
-          <!-- Course card buttons -->
-          <a href="topic.html" class="btn-primary btn-sm">
-            Enter World →
-          </a>
+          <!-- MICROECONOMICS -->
+          <div class="course-card" data-course-id="microeconomics" style="--subject-color: var(--subject-micro-color)">
+            <h3>📈 Microeconomics</h3>
+            <span class="rank-tag rank-badge-scholar">◈ SCHOLAR</span>
+            <div class="topic-progress-wrap">
+              <div class="topic-progress-header">
+                <span class="topic-progress-label">Progress</span>
+                <span class="topic-progress-count">4 / 10</span>
+              </div>
+              <div class="topic-progress-track">
+                <div class="topic-progress-fill" style="width: 40%"></div>
+              </div>
+            </div>
+            <a href="topic.html" class="btn-primary btn-sm">Enter World →</a>
+          </div>
+
+          <!-- STATISTICS -->
+          <div class="course-card" data-course-id="statistics" style="--subject-color: var(--subject-stats-color)">
+            <h3>📊 Statistics</h3>
+            <span class="rank-tag rank-badge-apprentice">◈ APPRENTICE</span>
+            <div class="topic-progress-wrap">
+              <div class="topic-progress-header">
+                <span class="topic-progress-label">Progress</span>
+                <span class="topic-progress-count">1 / 12</span>
+              </div>
+              <div class="topic-progress-track">
+                <div class="topic-progress-fill" style="width: 10%"></div>
+              </div>
+            </div>
+            <a href="#" class="btn-primary btn-sm">Enter World →</a>
+          </div>
+
+          <!-- FINANCIAL ACCOUNTING -->
+          <div class="course-card" data-course-id="financial-accounting"
+            style="--subject-color: var(--subject-accounting-color)">
+            <h3>💼 Financial Accounting</h3>
+            <span class="rank-tag rank-badge-apprentice">◈ APPRENTICE</span>
+            <div class="topic-progress-wrap">
+              <div class="topic-progress-header">
+                <span class="topic-progress-label">Progress</span>
+                <span class="topic-progress-count">0 / 8</span>
+              </div>
+              <div class="topic-progress-track">
+                <div class="topic-progress-fill" style="width: 0%"></div>
+              </div>
+            </div>
+            <a href="#" class="btn-primary btn-sm">Enter World →</a>
+          </div>
+
+          <!-- BUSINESS LAW -->
+          <div class="course-card" data-course-id="business-law" style="--subject-color: var(--subject-law-color)">
+            <h3>⚖️ Business Law</h3>
+            <span class="rank-tag rank-badge-apprentice">◈ APPRENTICE</span>
+            <div class="topic-progress-wrap">
+              <div class="topic-progress-header">
+                <span class="topic-progress-label">Progress</span>
+                <span class="topic-progress-count">0 / 9</span>
+              </div>
+              <div class="topic-progress-track">
+                <div class="topic-progress-fill" style="width: 0%"></div>
+              </div>
+            </div>
+            <a href="#" class="btn-primary btn-sm">Enter World →</a>
+          </div>
+
+          <!-- ORGANIZATIONAL BEHAVIOR -->
+          <div class="course-card" data-course-id="org-behavior" style="--subject-color: var(--subject-org-color)">
+            <h3>🏢 Org. Behavior</h3>
+            <span class="rank-tag rank-badge-apprentice">◈ APPRENTICE</span>
+            <div class="topic-progress-wrap">
+              <div class="topic-progress-header">
+                <span class="topic-progress-label">Progress</span>
+                <span class="topic-progress-count">0 / 7</span>
+              </div>
+              <div class="topic-progress-track">
+                <div class="topic-progress-fill" style="width: 0%"></div>
+              </div>
+            </div>
+            <a href="#" class="btn-primary btn-sm">Enter World →</a>
+          </div>
+
+          <!-- COMING SOON CARDS -->
+          <div class="course-card coming-soon">
+            <h3>📉 Macroeconomics</h3>
+            <span class="badge-coming-soon">⏳ Coming Soon</span>
+          </div>
+
+          <div class="course-card coming-soon">
+            <h3>🔬 Research Methods</h3>
+            <span class="badge-coming-soon">⏳ Coming Soon</span>
+          </div>
+
+          <div class="course-card coming-soon">
+            <h3>💹 Corporate Finance</h3>
+            <span class="badge-coming-soon">⏳ Coming Soon</span>
+          </div>
+
         </div>
-
-        <div class="course-card" data-course-id="statistics" style="--subject-color: var(--subject-stats-color)">
-          <h3>📊 Statistics</h3>
-          <span class="rank-tag rank-badge-apprentice">◈ APPRENTICE</span>
-          <p>Level 1 · Apprentice Rank</p>
-          <p>Progress: 10%</p>
-          <a href="#">Enter World</a>
-        </div>
-
-        <div class="course-card" data-course-id="accounting" style="--subject-color: var(--subject-accounting-color)">
-          <h3>💼 Financial Accounting</h3>
-          <span class="rank-tag rank-badge-apprentice">◈ APPRENTICE</span>
-          <p>Level 1 · Apprentice Rank</p>
-          <p>Progress: 0%</p>
-          <a href="#">Enter World</a>
-        </div>
-
-        <div class="course-card" data-course-id="law" style="--subject-color: var(--subject-law-color)">
-          <h3>⚖️ Business Law</h3>
-          <span class="rank-tag rank-badge-apprentice">◈ APPRENTICE</span>
-          <p>Level 1 · Apprentice Rank</p>
-          <p>Progress: 0%</p>
-          <a href="#">Enter World</a>
-        </div>
-
-        <div class="course-card" data-course-id="org-behavior" style="--subject-color: var(--subject-org-color)">
-
-          <h3>🏢 Org. Behavior</h3>
-          <span class="rank-tag rank-badge-apprentice">◈ APPRENTICE</span>
-          <p>Level 1 · Apprentice Rank</p>
-          <p>Progress: 0%</p>
-          <a href="#">Enter World</a>
-        </div>
-
-        <div class="course-card coming-soon">
-          <h3>🔬 Research Methods</h3>
-          <p class="coming-soon-badge">⏳ Coming Soon</p>
-        </div>
-
-        <div class="course-card coming-soon">
-          <h3>💹 Corporate Finance</h3>
-          <p class="coming-soon-badge">⏳ Coming Soon</p>
-        </div>
-
       </div>
     </section>
 
-
-
   </main>
+
+  
 
   <!-- ===== FOOTER ===== -->
   <footer>
