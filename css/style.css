@@ -5248,6 +5248,7 @@ input[type="checkbox"]:checked {
     flex: 1;
 }
 
+
 .card-footer {
     margin-top: var(--space-4);
     padding-top: var(--space-4);
