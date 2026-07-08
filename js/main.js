@@ -140,6 +140,510 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+
+
+/* ============================================
+   SHADOWFORGE DATA STRUCTURE
+   Day 27 — Complete course and topic data
+   This is the single source of truth for
+   all platform content.
+   ============================================ */
+
+const SHADOWFORGE_DATA = {
+
+    /* ────────────────────────────────────────
+       COURSES
+    ──────────────────────────────────────── */
+    courses: [
+        {
+            id: 'microeconomics',
+            name: 'Microeconomics',
+            icon: '📈',
+            status: 'active',
+            subjectColor: 'var(--subject-micro-color)',
+            description: 'Master how markets, prices, and decisions work.',
+            rank: 'Scholar',
+            rankClass: 'rank-badge-scholar',
+            level: 3,
+            topics: [
+                {
+                    id: 'intro-economics',
+                    title: 'Introduction to Economics',
+                    status: 'completed',
+                    xpReward: 100,
+                    xpEarned: 100
+                },
+                {
+                    id: 'scarcity-choice',
+                    title: 'Scarcity & Choice',
+                    status: 'completed',
+                    xpReward: 120,
+                    xpEarned: 120
+                },
+                {
+                    id: 'opportunity-cost',
+                    title: 'Opportunity Cost',
+                    status: 'completed',
+                    xpReward: 100,
+                    xpEarned: 100
+                },
+                {
+                    id: 'production-possibilities',
+                    title: 'Production Possibilities',
+                    status: 'completed',
+                    xpReward: 150,
+                    xpEarned: 150
+                },
+                {
+                    id: 'demand-supply',
+                    title: 'Demand & Supply',
+                    status: 'active',
+                    xpReward: 200,
+                    xpEarned: 0
+                },
+                {
+                    id: 'price-elasticity',
+                    title: 'Price Elasticity',
+                    status: 'locked',
+                    xpReward: 200,
+                    xpEarned: 0
+                },
+                {
+                    id: 'consumer-behaviour',
+                    title: 'Consumer Behaviour',
+                    status: 'locked',
+                    xpReward: 220,
+                    xpEarned: 0
+                },
+                {
+                    id: 'market-structures',
+                    title: 'Market Structures',
+                    status: 'locked',
+                    xpReward: 240,
+                    xpEarned: 0
+                },
+                {
+                    id: 'market-failure',
+                    title: 'Market Failure',
+                    status: 'locked',
+                    xpReward: 260,
+                    xpEarned: 0
+                },
+                {
+                    id: 'government-intervention',
+                    title: 'Government Intervention',
+                    status: 'locked',
+                    xpReward: 280,
+                    xpEarned: 0
+                }
+            ]
+        },
+        {
+            id: 'statistics',
+            name: 'Statistics',
+            icon: '📊',
+            status: 'active',
+            subjectColor: 'var(--subject-stats-color)',
+            description: 'Understand data, probability, and statistical thinking.',
+            rank: 'Apprentice',
+            rankClass: 'rank-badge-apprentice',
+            level: 1,
+            topics: [
+                {
+                    id: 'intro-statistics',
+                    title: 'Introduction to Statistics',
+                    status: 'completed',
+                    xpReward: 100,
+                    xpEarned: 100
+                },
+                {
+                    id: 'data-types',
+                    title: 'Types of Data',
+                    status: 'locked',
+                    xpReward: 120,
+                    xpEarned: 0
+                },
+                {
+                    id: 'central-tendency',
+                    title: 'Measures of Central Tendency',
+                    status: 'locked',
+                    xpReward: 150,
+                    xpEarned: 0
+                },
+                {
+                    id: 'dispersion',
+                    title: 'Measures of Dispersion',
+                    status: 'locked',
+                    xpReward: 150,
+                    xpEarned: 0
+                },
+                {
+                    id: 'probability',
+                    title: 'Introduction to Probability',
+                    status: 'locked',
+                    xpReward: 200,
+                    xpEarned: 0
+                },
+                {
+                    id: 'distributions',
+                    title: 'Probability Distributions',
+                    status: 'locked',
+                    xpReward: 220,
+                    xpEarned: 0
+                },
+                {
+                    id: 'sampling',
+                    title: 'Sampling Methods',
+                    status: 'locked',
+                    xpReward: 200,
+                    xpEarned: 0
+                },
+                {
+                    id: 'hypothesis-testing',
+                    title: 'Hypothesis Testing',
+                    status: 'locked',
+                    xpReward: 250,
+                    xpEarned: 0
+                },
+                {
+                    id: 'correlation',
+                    title: 'Correlation & Regression',
+                    status: 'locked',
+                    xpReward: 260,
+                    xpEarned: 0
+                },
+                {
+                    id: 'chi-square',
+                    title: 'Chi-Square Tests',
+                    status: 'locked',
+                    xpReward: 280,
+                    xpEarned: 0
+                },
+                {
+                    id: 'statistical-inference',
+                    title: 'Statistical Inference',
+                    status: 'locked',
+                    xpReward: 300,
+                    xpEarned: 0
+                },
+                {
+                    id: 'data-presentation',
+                    title: 'Data Presentation',
+                    status: 'locked',
+                    xpReward: 200,
+                    xpEarned: 0
+                }
+            ]
+        },
+        {
+            id: 'financial-accounting',
+            name: 'Financial Accounting',
+            icon: '💼',
+            status: 'active',
+            subjectColor: 'var(--subject-accounting-color)',
+            description: 'Learn to record, report, and analyse financial data.',
+            rank: 'Apprentice',
+            rankClass: 'rank-badge-apprentice',
+            level: 1,
+            topics: [
+                {
+                    id: 'intro-accounting',
+                    title: 'Introduction to Accounting',
+                    status: 'active',
+                    xpReward: 100,
+                    xpEarned: 0
+                },
+                {
+                    id: 'accounting-equation',
+                    title: 'The Accounting Equation',
+                    status: 'locked',
+                    xpReward: 120,
+                    xpEarned: 0
+                },
+                {
+                    id: 'double-entry',
+                    title: 'Double Entry Bookkeeping',
+                    status: 'locked',
+                    xpReward: 150,
+                    xpEarned: 0
+                },
+                {
+                    id: 'trial-balance',
+                    title: 'Trial Balance',
+                    status: 'locked',
+                    xpReward: 160,
+                    xpEarned: 0
+                },
+                {
+                    id: 'income-statement',
+                    title: 'Income Statement',
+                    status: 'locked',
+                    xpReward: 200,
+                    xpEarned: 0
+                },
+                {
+                    id: 'balance-sheet',
+                    title: 'Balance Sheet',
+                    status: 'locked',
+                    xpReward: 200,
+                    xpEarned: 0
+                },
+                {
+                    id: 'cash-flow',
+                    title: 'Cash Flow Statement',
+                    status: 'locked',
+                    xpReward: 220,
+                    xpEarned: 0
+                },
+                {
+                    id: 'depreciation',
+                    title: 'Depreciation',
+                    status: 'locked',
+                    xpReward: 180,
+                    xpEarned: 0
+                }
+            ]
+        },
+        {
+            id: 'business-law',
+            name: 'Business Law',
+            icon: '⚖️',
+            status: 'active',
+            subjectColor: 'var(--subject-law-color)',
+            description: 'Understand the legal framework of business operations.',
+            rank: 'Apprentice',
+            rankClass: 'rank-badge-apprentice',
+            level: 1,
+            topics: [
+                {
+                    id: 'intro-law',
+                    title: 'Introduction to Business Law',
+                    status: 'active',
+                    xpReward: 100,
+                    xpEarned: 0
+                },
+                {
+                    id: 'contract-law',
+                    title: 'Contract Law',
+                    status: 'locked',
+                    xpReward: 200,
+                    xpEarned: 0
+                },
+                {
+                    id: 'law-of-tort',
+                    title: 'Law of Tort',
+                    status: 'locked',
+                    xpReward: 180,
+                    xpEarned: 0
+                },
+                {
+                    id: 'company-law',
+                    title: 'Company Law',
+                    status: 'locked',
+                    xpReward: 220,
+                    xpEarned: 0
+                },
+                {
+                    id: 'employment-law',
+                    title: 'Employment Law',
+                    status: 'locked',
+                    xpReward: 200,
+                    xpEarned: 0
+                },
+                {
+                    id: 'intellectual-property',
+                    title: 'Intellectual Property',
+                    status: 'locked',
+                    xpReward: 200,
+                    xpEarned: 0
+                },
+                {
+                    id: 'consumer-protection',
+                    title: 'Consumer Protection Law',
+                    status: 'locked',
+                    xpReward: 180,
+                    xpEarned: 0
+                },
+                {
+                    id: 'dispute-resolution',
+                    title: 'Dispute Resolution',
+                    status: 'locked',
+                    xpReward: 200,
+                    xpEarned: 0
+                },
+                {
+                    id: 'international-trade-law',
+                    title: 'International Trade Law',
+                    status: 'locked',
+                    xpReward: 250,
+                    xpEarned: 0
+                }
+            ]
+        },
+        {
+            id: 'org-behavior',
+            name: 'Organizational Behavior',
+            icon: '🏢',
+            status: 'active',
+            subjectColor: 'var(--subject-org-color)',
+            description: 'Understand how people and groups behave in organisations.',
+            rank: 'Apprentice',
+            rankClass: 'rank-badge-apprentice',
+            level: 1,
+            topics: [
+                {
+                    id: 'intro-org',
+                    title: 'Introduction to OB',
+                    status: 'active',
+                    xpReward: 100,
+                    xpEarned: 0
+                },
+                {
+                    id: 'individual-behaviour',
+                    title: 'Individual Behaviour',
+                    status: 'locked',
+                    xpReward: 150,
+                    xpEarned: 0
+                },
+                {
+                    id: 'motivation',
+                    title: 'Motivation Theories',
+                    status: 'locked',
+                    xpReward: 200,
+                    xpEarned: 0
+                },
+                {
+                    id: 'group-dynamics',
+                    title: 'Group Dynamics',
+                    status: 'locked',
+                    xpReward: 180,
+                    xpEarned: 0
+                },
+                {
+                    id: 'leadership',
+                    title: 'Leadership Styles',
+                    status: 'locked',
+                    xpReward: 220,
+                    xpEarned: 0
+                },
+                {
+                    id: 'organisational-culture',
+                    title: 'Organisational Culture',
+                    status: 'locked',
+                    xpReward: 200,
+                    xpEarned: 0
+                },
+                {
+                    id: 'conflict-management',
+                    title: 'Conflict Management',
+                    status: 'locked',
+                    xpReward: 200,
+                    xpEarned: 0
+                }
+            ]
+        }
+    ],
+
+    /* ────────────────────────────────────────
+       COMING SOON COURSES
+    ──────────────────────────────────────── */
+    comingSoon: [
+        {
+            id: 'macroeconomics',
+            name: 'Macroeconomics',
+            icon: '📉',
+            status: 'coming-soon'
+        },
+        {
+            id: 'research-methods',
+            name: 'Research Methods',
+            icon: '🔬',
+            status: 'coming-soon'
+        },
+        {
+            id: 'corporate-finance',
+            name: 'Corporate Finance',
+            icon: '💹',
+            status: 'coming-soon'
+        }
+    ]
+};
+
+/* ────────────────────────────────────────
+   HELPER FUNCTIONS
+   Useful operations on the data
+──────────────────────────────────────── */
+
+// Get a course by its ID
+function getCourse(courseId) {
+    return SHADOWFORGE_DATA.courses.find(c => c.id === courseId);
+}
+
+// Get progress percentage for a course
+function getCourseProgress(courseId) {
+    const course = getCourse(courseId);
+    if (!course) return 0;
+
+    const completed = course.topics.filter(
+        t => t.status === 'completed'
+    ).length;
+
+    return Math.round((completed / course.topics.length) * 100);
+}
+
+// Get total XP earned across all courses
+function getTotalXPEarned() {
+    return SHADOWFORGE_DATA.courses.reduce((total, course) => {
+        const courseXP = course.topics.reduce((sum, topic) => {
+            return sum + topic.xpEarned;
+        }, 0);
+        return total + courseXP;
+    }, 0);
+}
+
+// Get total completed topics across all courses
+function getTotalCompletedTopics() {
+    return SHADOWFORGE_DATA.courses.reduce((total, course) => {
+        return total + course.topics.filter(
+            t => t.status === 'completed'
+        ).length;
+    }, 0);
+}
+
+// Get the active topic for a course
+function getActiveTopic(courseId) {
+    const course = getCourse(courseId);
+    if (!course) return null;
+    return course.topics.find(t => t.status === 'active');
+}
+
+// Mark a topic as complete and unlock the next one
+function completeTopic(courseId, topicId) {
+    const course = getCourse(courseId);
+    if (!course) return;
+
+    const topicIndex = course.topics.findIndex(t => t.id === topicId);
+    if (topicIndex === -1) return;
+
+    // Mark current topic complete
+    course.topics[topicIndex].status = 'completed';
+    course.topics[topicIndex].xpEarned =
+        course.topics[topicIndex].xpReward;
+
+    // Unlock next topic if it exists
+    if (topicIndex + 1 < course.topics.length) {
+        course.topics[topicIndex + 1].status = 'active';
+    }
+
+    // Award XP
+    const xpEarned = course.topics[topicIndex].xpReward;
+    addXP(xpEarned, `Completed: ${course.topics[topicIndex].title}`);
+
+    console.log(`✅ Topic complete: ${course.topics[topicIndex].title}`);
+    console.log(`🔓 Unlocked: ${course.topics[topicIndex + 1]?.title}`);
+}
+
+
 /* ============================================
    SHADOWFORGE XP SYSTEM
    Day 26 — Rank calculation, XP tracking,
