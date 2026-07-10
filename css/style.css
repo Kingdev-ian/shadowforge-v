@@ -237,6 +237,7 @@
     --subject-law-color: #ff3366;
     --subject-org-color: #00ff88;
     --subject-macro-color: #00ff88;
+    --subject-webdev-color: #a855f7;
 
     :root {
         /* existing tokens stay */
@@ -5253,4 +5254,20 @@ input[type="checkbox"]:checked {
     margin-top: var(--space-4);
     padding-top: var(--space-4);
     border-top: 1px solid var(--border-dim);
+}
+
+
+/* ── TAB PANELS ── */
+.tab-panel {
+    display: none;
+}
+
+.tab-panel.active {
+    display: block;
+}
+
+.mode-tab.active {
+    background: var(--bg-card);
+    color: var(--neon-cyan);
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.15);
 }

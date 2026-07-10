@@ -238,6 +238,8 @@ const SHADOWFORGE_DATA = {
                 }
             ]
         },
+
+
         {
             id: 'statistics',
             name: 'Statistics',
@@ -541,8 +543,81 @@ const SHADOWFORGE_DATA = {
                     xpEarned: 0
                 }
             ]
-        }
+        },
+
+        {
+            id: 'web-development',
+            name: 'Web Development',
+            icon: '💻',
+            status: 'active',
+            subjectColor: 'var(--subject-webdev-color)',
+            description: 'Learn how to build modern websites and web applications.',
+            rank: 'Apprentice',
+            rankClass: 'rank-badge-apprentice',
+            level: 1,
+            topics: [
+                {
+                    id: 'intro-web',
+                    title: 'Introduction to Web Development',
+                    status: 'active',
+                    xpReward: 100,
+                    xpEarned: 0
+                },
+                {
+                    id: 'html-basics',
+                    title: 'HTML Fundamentals',
+                    status: 'locked',
+                    xpReward: 120,
+                    xpEarned: 0
+                },
+                {
+                    id: 'css-basics',
+                    title: 'CSS Fundamentals',
+                    status: 'locked',
+                    xpReward: 150,
+                    xpEarned: 0
+                },
+                {
+                    id: 'responsive-design',
+                    title: 'Responsive Design',
+                    status: 'locked',
+                    xpReward: 180,
+                    xpEarned: 0
+                },
+                {
+                    id: 'javascript-basics',
+                    title: 'JavaScript Fundamentals',
+                    status: 'locked',
+                    xpReward: 220,
+                    xpEarned: 0
+                },
+                {
+                    id: 'dom-manipulation',
+                    title: 'DOM Manipulation',
+                    status: 'locked',
+                    xpReward: 220,
+                    xpEarned: 0
+                },
+                {
+                    id: 'react-basics',
+                    title: 'React Fundamentals',
+                    status: 'locked',
+                    xpReward: 250,
+                    xpEarned: 0
+                },
+                {
+                    id: 'backend-basics',
+                    title: 'Backend Fundamentals',
+                    status: 'locked',
+                    xpReward: 280,
+                    xpEarned: 0
+                }
+            ]
+        },
+
     ],
+
+
 
     /* ────────────────────────────────────────
        COMING SOON COURSES
@@ -1192,6 +1267,342 @@ document.addEventListener('DOMContentLoaded', () => {
     // Topic page
     if (document.querySelector('.topic-path')) {
         generateTopicMap('microeconomics');
+    }
+
+});
+
+/* ============================================
+   TAB SWITCHING SYSTEM
+   Day 29 — Story, Exam, Quiz mode tabs
+   ============================================ */
+
+/* ────────────────────────────────────────
+   FUNCTION: initTabs
+   Sets up tab switching on topic page
+──────────────────────────────────────── */
+function initTabs() {
+    const tabs = document.querySelectorAll('.mode-tab');
+    const panels = document.querySelectorAll('.tab-panel');
+
+    if (tabs.length === 0) return;
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const targetPanel = tab.getAttribute('data-tab');
+            switchTab(targetPanel);
+        });
+    });
+
+    console.log('✅ Tab system initialised');
+}
+
+/* ────────────────────────────────────────
+   FUNCTION: switchTab
+   Switches to a specific tab by name
+──────────────────────────────────────── */
+function switchTab(tabName) {
+    const tabs = document.querySelectorAll('.mode-tab');
+    const panels = document.querySelectorAll('.tab-panel');
+
+    // Remove active from all tabs
+    tabs.forEach(tab => tab.classList.remove('active'));
+
+    // Hide all panels
+    panels.forEach(panel => panel.classList.remove('active'));
+
+    // Activate the clicked tab
+    const activeTab = document.querySelector(
+        `.mode-tab[data-tab="${tabName}"]`
+    );
+    if (activeTab) activeTab.classList.add('active');
+
+    // Show the matching panel
+    const activePanel = document.querySelector(
+        `.tab-panel[data-panel="${tabName}"]`
+    );
+    if (activePanel) activePanel.classList.add('active');
+
+    // Scroll to top of content
+    activePanel?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    console.log(`📑 Switched to: ${tabName} mode`);
+}
+
+/* ────────────────────────────────────────
+   FUNCTION: initStoryButtons
+   Buttons inside story that navigate to next tab
+──────────────────────────────────────── */
+function initStoryButtons() {
+
+    // Story → Exam button
+    const goToExam = document.getElementById('go-to-exam');
+    if (goToExam) {
+        goToExam.addEventListener('click', () => {
+            switchTab('exam');
+        });
+    }
+
+    // Exam → Quiz button
+    const goToQuiz = document.getElementById('go-to-quiz');
+    if (goToQuiz) {
+        goToQuiz.addEventListener('click', () => {
+            switchTab('quiz');
+        });
+    }
+
+}
+
+/* ============================================
+   QUIZ ENGINE
+   Day 29 — Answer checking, scoring, feedback
+   ============================================ */
+
+// Quiz configuration for Demand & Supply
+const QUIZ_DATA = {
+    topicId: 'demand-supply',
+    courseId: 'microeconomics',
+    xpReward: 200,
+    passMark: 2, // out of 3 to pass
+    questions: [
+        {
+            id: 1,
+            correctAnswer: 'B',
+            correctFeedback: '✅ Correct! Market approves 😄 As price rises, quantity demanded falls — that is the Law of Demand.',
+            wrongFeedback: '❌ Economics disagrees 😭 The Law of Demand says price and quantity demanded move in opposite directions.'
+        },
+        {
+            id: 2,
+            correctAnswer: 'C',
+            correctFeedback: '✅ Correct! At equilibrium Qd = Qs — the market is perfectly balanced.',
+            wrongFeedback: '❌ Not quite 😭 At equilibrium, quantity demanded equals quantity supplied. No surplus, no shortage.'
+        },
+        {
+            id: 3,
+            correctAnswer: 'D',
+            correctFeedback: '✅ Correct! Higher incomes shift the demand curve right for normal goods.',
+            wrongFeedback: '❌ Economics disagrees 😭 Rising incomes increase demand for normal goods — the curve shifts right.'
+        }
+    ]
+};
+
+/* ────────────────────────────────────────
+   FUNCTION: initQuiz
+   Sets up the quiz engine
+──────────────────────────────────────── */
+function initQuiz() {
+    const submitBtn = document.getElementById('submit-quiz');
+    const resetBtn = document.getElementById('reset-quiz');
+
+    if (!submitBtn) return;
+
+    submitBtn.addEventListener('click', () => {
+        evaluateQuiz();
+    });
+
+    resetBtn?.addEventListener('click', () => {
+        resetQuiz();
+    });
+
+    console.log('✅ Quiz engine initialised');
+}
+
+/* ────────────────────────────────────────
+   FUNCTION: evaluateQuiz
+   Checks answers and shows feedback
+──────────────────────────────────────── */
+function evaluateQuiz() {
+    let score = 0;
+    let allAnswered = true;
+
+    QUIZ_DATA.questions.forEach(question => {
+        const selected = document.querySelector(
+            `input[name="q${question.id}"]:checked`
+        );
+        const feedbackEl = document.getElementById(
+            `feedback-${question.id}`
+        );
+        const questionEl = document.getElementById(
+            `question-${question.id}`
+        );
+
+        // Check if answered
+        if (!selected) {
+            allAnswered = false;
+            if (feedbackEl) {
+                feedbackEl.className = 'quiz-feedback feedback-wrong';
+                feedbackEl.textContent = '⚠️ Please select an answer.';
+                feedbackEl.style.display = 'block';
+            }
+            return;
+        }
+
+        // Check if correct
+        const isCorrect = selected.value === question.correctAnswer;
+
+        if (isCorrect) {
+            score++;
+            if (feedbackEl) {
+                feedbackEl.className = 'quiz-feedback feedback-correct';
+                feedbackEl.textContent = question.correctFeedback;
+                feedbackEl.style.display = 'block';
+            }
+            if (questionEl) {
+                questionEl.classList.add('answered-correct');
+            }
+        } else {
+            if (feedbackEl) {
+                feedbackEl.className = 'quiz-feedback feedback-wrong';
+                feedbackEl.textContent = question.wrongFeedback;
+                feedbackEl.style.display = 'block';
+            }
+            if (questionEl) {
+                questionEl.classList.add('answered-wrong');
+            }
+        }
+
+        // Disable all options for this question
+        document.querySelectorAll(
+            `input[name="q${question.id}"]`
+        ).forEach(input => {
+            input.disabled = true;
+        });
+
+    });
+
+    if (!allAnswered) return;
+
+    // Show result
+    showQuizResult(score);
+}
+
+/* ────────────────────────────────────────
+   FUNCTION: showQuizResult
+   Displays final score and XP claim
+──────────────────────────────────────── */
+function showQuizResult(score) {
+    const resultEl = document.getElementById('quiz-result');
+    const messageEl = document.getElementById('result-message');
+    const claimBtn = document.getElementById('claim-xp');
+    const submitBtn = document.getElementById('submit-quiz');
+    const total = QUIZ_DATA.questions.length;
+    const passed = score >= QUIZ_DATA.passMark;
+
+    if (resultEl) resultEl.style.display = 'block';
+    if (submitBtn) submitBtn.style.display = 'none';
+
+    if (messageEl) {
+        if (passed) {
+            messageEl.innerHTML = `
+        <strong style="color: var(--neon-green)">
+          ⚡ ${score}/${total} Correct — Topic Passed!
+        </strong>
+        <br>
+        You have mastered Demand & Supply.
+        Claim your XP and unlock the next topic.
+      `;
+        } else {
+            messageEl.innerHTML = `
+        <strong style="color: var(--neon-red)">
+          ${score}/${total} Correct — Not quite there yet.
+        </strong>
+        <br>
+        Review the Story and Exam notes then try again.
+      `;
+        }
+    }
+
+    // Show claim button only if passed
+    if (claimBtn && passed) {
+        claimBtn.style.display = 'flex';
+        claimBtn.addEventListener('click', () => {
+            claimTopicXP();
+        });
+    }
+
+    // If failed show reset
+    if (!passed) {
+        setTimeout(() => {
+            const resetBtn = document.getElementById('reset-quiz');
+            if (resetBtn) resetBtn.style.display = 'flex';
+        }, 1000);
+    }
+
+    console.log(`📊 Quiz result: ${score}/${total} — ${passed ? 'PASSED' : 'FAILED'}`);
+}
+
+/* ────────────────────────────────────────
+   FUNCTION: claimTopicXP
+   Awards XP and unlocks next topic
+──────────────────────────────────────── */
+function claimTopicXP() {
+    completeTopic(QUIZ_DATA.courseId, QUIZ_DATA.topicId);
+
+    // Regenerate topic map to show updated states
+    if (document.querySelector('.topic-path')) {
+        generateTopicMap(QUIZ_DATA.courseId);
+    }
+
+    // Switch back to story mode for next topic
+    switchTab('story');
+
+    // Show success toast
+    const toast = document.createElement('div');
+    toast.className = 'toast success';
+    toast.innerHTML = `
+    ✅ Topic Complete — Next topic unlocked!
+  `;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 3000);
+
+    console.log('🎉 XP claimed and next topic unlocked');
+}
+
+/* ────────────────────────────────────────
+   FUNCTION: resetQuiz
+   Clears all answers and feedback
+──────────────────────────────────────── */
+function resetQuiz() {
+    // Clear all radio selections
+    document.querySelectorAll(
+        '.answer-options input[type="radio"]'
+    ).forEach(input => {
+        input.checked = false;
+        input.disabled = false;
+    });
+
+    // Clear all feedback
+    document.querySelectorAll('.quiz-feedback').forEach(el => {
+        el.textContent = '';
+        el.style.display = 'none';
+        el.className = 'quiz-feedback';
+    });
+
+    // Remove answer state classes
+    document.querySelectorAll('.quiz-question').forEach(q => {
+        q.classList.remove('answered-correct', 'answered-wrong');
+    });
+
+    // Hide result
+    const resultEl = document.getElementById('quiz-result');
+    if (resultEl) resultEl.style.display = 'none';
+
+    // Show submit button again
+    const submitBtn = document.getElementById('submit-quiz');
+    if (submitBtn) submitBtn.style.display = 'flex';
+
+    console.log('🔄 Quiz reset');
+}
+
+/* ────────────────────────────────────────
+   INITIALISE ON PAGE LOAD
+──────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', () => {
+
+    // Topic page only
+    if (document.querySelector('#mode-tabs')) {
+        initTabs();
+        initStoryButtons();
+        initQuiz();
     }
 
 });

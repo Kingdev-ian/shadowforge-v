@@ -227,15 +227,23 @@
             <p>⚡ +200 XP on completion</p>
         </header>
 
-        <!-- Mode Tabs -->
-        <section id="mode-tabs">
-            <button>🎬 Story Mode</button>
-            <button>📚 Exam Mode</button>
-            <a href="quiz.html">❓ Quiz Mode</a>
-        </section>
 
-        <!-- Story Mode Content -->
-        <section id="story-mode">
+        <!-- ===== MODE TABS ===== -->
+        <div id="mode-tabs">
+            <button class="mode-tab active" data-tab="story">
+                🎬 Story
+            </button>
+            <button class="mode-tab" data-tab="exam">
+                📚 Exam
+            </button>
+            <button class="mode-tab" data-tab="quiz">
+                ❓ Quiz
+            </button>
+        </div>
+
+        <!-- ===== STORY MODE PANEL ===== -->
+        <section class="tab-panel active" data-panel="story" id="story-mode">
+
             <div class="story-card">
                 <div class="story-scene">📍 Scene 1 — The Market</div>
                 <p class="story-text">
@@ -250,6 +258,8 @@
                     <span class="dramatic">"Eight dollars."</span>
                     Yesterday it was two. You have just witnessed the
                     <span class="emphasis">Law of Supply</span> in action.
+                    When supply drops and demand stays the same — prices rise.
+                    The market has spoken.
                 </p>
             </div>
 
@@ -262,130 +272,202 @@
                     changed yet.
                 </p>
                 <p class="story-text">
-                    What happens? Prices rise <span class="emphasis">again.</span>
                     Farmers see the high prices and think —
                     <span class="funny">time to plant more avocados.</span>
                     Six months later supply catches up. Prices fall back down.
-                </p>
-                <p class="story-text">
                     That invisible dance between buyers and sellers finding
                     balance — that is what economists call the
                     <span class="emphasis">Equilibrium Point.</span>
-                    The market finding its own peace.
                 </p>
             </div>
-        </section>
 
-
-        <!-- Exam Mode Content -->
-        <section id="exam-mode">
-
-            <h2>Core Definitions</h2>
-            <article class="definition">
-                <h3>Demand</h3>
-                <p>
-                    The quantity of a good consumers are willing and able to buy
-                    at various prices, all else being equal.
-                </p>
-            </article>
-
-            <article class="definition">
-                <h3>Supply</h3>
-                <p>
-                    The quantity of a good producers are willing and able to offer
-                    for sale at various prices.
-                </p>
-            </article>
-
-            <article class="definition">
-                <h3>Equilibrium Price</h3>
-                <p>
-                    The price at which quantity demanded equals quantity supplied.
-                    The market clears — no shortage or surplus exists.
-                </p>
-            </article>
-
-            <h2>The Laws</h2>
-
-            <dl>
-                <dt>Law of Demand</dt>
-                <dd>as price rises, quantity demanded falls.</dd>
-
-                <dt>Law of Supply</dt>
-                <dd>as price rises, quantity supplied rises.</dd>
-
-                <dt>At equilibrium</dt>
-                <dd> quantity demanded equals quantity supplied.</dd>
-
-                <dt>Shortage</dt>
-                <dd>price below equilibrium, demand exceeds supply.</dd>
-
-                <dt>Surplus</dt>
-                <dd>price above equilibrium, supply exceeds demand.</dd>
-
-            </dl>
-        </section>
-
-        <!-- Quiz Mode Content -->
-        <section id="quiz-mode">
-
-            <h2>Test Yourself</h2>
-
-            <article class="quiz-question">
-                <p>
-                    <strong>Question 1:</strong> According to the Law of Demand,
-                    what happens when price increases?
-                </p>
-                <ul>
-                    <li><a href="#">A - Quantity demanded increases</a></li>
-                    <li><a href="#">B - Quantity demanded decreases</a></li>
-                    <li><a href="#">c - Supply increases</a></li>
-                    <li><a href="#">D - Nothing Changes</a></li>
-                </ul>
-            </article>
-
-            <article class="quiz-question">
-                <p>
-                    <strong>Question 2:</strong> What is true at the equilibrium point?
-                </p>
-                <ul>
-                    <li><a href="#">A - There is always a surplus</a></li>
-                    <Li><a href="#">B - Price is at its maximum</a></Li>
-                    <li><a href="#">c - Quantity demanded equals quantity supplied</a></li>
-                    <li><a href="#">D - Producers control the price</a></li>
-                </ul>
-            </article>
-
-            <article class="quiz-question">
-                <p>
-                    <strong>Question 3:</strong> What is market equilibrium?
-                </p>
-                <ul>
-                    <li><a href="#">A - When demand is higher than supply</a></li>
-                    <li><a href="#">B - When supply is higher than demand</a></li>
-                    <li><a href="#">C - When quantity demanded equals quantity supplied</a></li>
-                    <li><a href="#">D - When prices are always increasing</a></li>
-                </ul>
-            </article>
+            <button class="btn-primary" id="go-to-exam">
+                📚 Ready for Exam Notes →
+            </button>
 
         </section>
 
-        <!-- Navigation Between Topics -->
+        <!-- ===== EXAM MODE PANEL ===== -->
+        <section class="tab-panel" data-panel="exam" id="exam-mode">
+
+            <div class="exam-section">
+                <h2>Core Definitions</h2>
+                <dl>
+                    <div class="definition-block">
+                        <dt class="definition-term">Demand</dt>
+                        <dd class="definition-text">
+                            The quantity of a good consumers are willing and able
+                            to buy at various prices, all else being equal.
+                        </dd>
+                    </div>
+                    <div class="definition-block">
+                        <dt class="definition-term">Supply</dt>
+                        <dd class="definition-text">
+                            The quantity of a good producers are willing and able
+                            to offer for sale at various prices.
+                        </dd>
+                    </div>
+                    <div class="definition-block">
+                        <dt class="definition-term">Equilibrium Price</dt>
+                        <dd class="definition-text">
+                            The price at which quantity demanded equals quantity
+                            supplied. The market clears — no shortage or surplus.
+                        </dd>
+                    </div>
+                </dl>
+            </div>
+
+            <div class="exam-section">
+                <h2>The Laws</h2>
+                <div class="key-point">
+                    Law of Demand — as price rises, quantity demanded falls.
+                </div>
+                <div class="key-point">
+                    Law of Supply — as price rises, quantity supplied rises.
+                </div>
+                <div class="key-point">
+                    At equilibrium — quantity demanded equals quantity supplied.
+                </div>
+                <div class="key-point">
+                    Shortage — price below equilibrium, demand exceeds supply.
+                </div>
+                <div class="key-point">
+                    Surplus — price above equilibrium, supply exceeds demand.
+                </div>
+            </div>
+
+            <div class="exam-section">
+                <h2>Demand Shifters</h2>
+                <div class="key-point">Income changes affect demand for normal goods.</div>
+                <div class="key-point">Prices of related goods — substitutes and complements.</div>
+                <div class="key-point">Consumer tastes and preferences.</div>
+                <div class="key-point">Expectations of future prices.</div>
+                <div class="key-point">Number of buyers in the market.</div>
+            </div>
+
+            <button class="btn-primary" id="go-to-quiz">
+                ❓ Test Yourself →
+            </button>
+
+        </section>
+
+        <!-- ===== QUIZ MODE PANEL ===== -->
+        <section class="tab-panel" data-panel="quiz" id="quiz-mode">
+
+            <div class="quiz-question" id="question-1">
+                <h2>Question 1 of 3</h2>
+                <p class="quiz-question-text">
+                    According to the Law of Demand, what happens to
+                    quantity demanded when price increases?
+                </p>
+                <div class="answer-options">
+                    <label>
+                        <input type="radio" name="q1" value="A">
+                        A — Quantity demanded increases
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="B">
+                        B — Quantity demanded decreases
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="C">
+                        C — Supply increases
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="D">
+                        D — Nothing changes
+                    </label>
+                </div>
+                <div class="quiz-feedback" id="feedback-1"></div>
+            </div>
+
+            <div class="quiz-question" id="question-2">
+                <h2>Question 2 of 3</h2>
+                <p class="quiz-question-text">
+                    At the equilibrium point in a market, which is true?
+                </p>
+                <div class="answer-options">
+                    <label>
+                        <input type="radio" name="q2" value="A">
+                        A — There is always a surplus
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="B">
+                        B — Price is at its maximum
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="C">
+                        C — Quantity demanded equals quantity supplied
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="D">
+                        D — Producers control the price
+                    </label>
+                </div>
+                <div class="quiz-feedback" id="feedback-2"></div>
+            </div>
+
+            <div class="quiz-question" id="question-3">
+                <h2>Question 3 of 3</h2>
+                <p class="quiz-question-text">
+                    If consumer incomes rise significantly, what happens
+                    to demand for normal goods?
+                </p>
+                <div class="answer-options">
+                    <label>
+                        <input type="radio" name="q3" value="A">
+                        A — Demand decreases
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="B">
+                        B — Supply increases
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="C">
+                        C — Demand stays unchanged
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="D">
+                        D — Demand increases — curve shifts right
+                    </label>
+                </div>
+                <div class="quiz-feedback" id="feedback-3"></div>
+            </div>
+
+            <div id="quiz-actions">
+                <button class="btn-primary" id="submit-quiz">
+                    Submit Quiz
+                </button>
+                <button class="btn-secondary" id="reset-quiz">
+                    Clear Answers
+                </button>
+            </div>
+
+            <div id="quiz-result" style="display:none">
+                <h2>Your Result</h2>
+                <p id="result-message"></p>
+                <button class="btn-primary" id="claim-xp" style="display:none">
+                    ⚡ Claim XP & Continue →
+                </button>
+            </div>
+
+        </section>
+        - Navigation Between Topics
         <section id="topic-navigation">
             <a href="#">← Previous Topic</a>
             <a href="#">Next Topic →</a>
         </section>
-    </main>
+    </main>        
 
-    <!-- ==== FOOTER==== -->
-    <footer>
-        <p>ShadowForge &copy; 2026 . Forge Your Knowledge</p>
-    </footer>
-    <!-- all your Html content -->
+        <!-- ==== FOOTER==== -->
+        <footer>
+            <p>ShadowForge &copy; 2026 . Forge Your Knowledge</p>
+        </footer>
+        <!-- all your Html content -->
 
-  <!-- JS goes at the very bottom - just before the closing body tag -->
-   <script src="js/main.js"></script>
-   
+        <!-- JS goes at the very bottom - just before the closing body tag -->
+        <script src="js/main.js"></script>
+
 
 </body>
 
