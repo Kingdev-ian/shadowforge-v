@@ -930,3 +930,268 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('📈 XP Progress:', getXPProgress(studentData.xp));
 
 });
+
+/* ============================================
+   DOM GENERATION SYSTEM
+   Day 28 — Builds HTML from data automatically
+   ============================================ */
+
+/* ────────────────────────────────────────
+   FUNCTION: generateCourseCards
+   Reads SHADOWFORGE_DATA and builds
+   all course cards dynamically
+──────────────────────────────────────── */
+function generateCourseCards() {
+
+
+
+
+    const grid = document.querySelector('.courses-grid');
+    if (!grid) return;
+
+    // Clear existing hardcoded cards
+    grid.innerHTML = '';
+
+    // Generate active course cards
+    SHADOWFORGE_DATA.courses.forEach((course, index) => {
+        const completed = course.topics.filter(
+            t => t.status === 'completed'
+        ).length;
+        const total = course.topics.length;
+        const percentage = Math.round((completed / total) * 100);
+
+        const card = document.createElement('div');
+        card.className = 'course-card animate-in';
+        card.style.animationDelay = `${(index + 1) * 0.1}s`;
+        card.style.opacity = '0';
+        card.setAttribute('data-course-id', course.id);
+        card.style.setProperty('--subject-color', course.subjectColor);
+
+        card.innerHTML = `
+      <h3>${course.icon} ${course.name}</h3>
+      <span class="rank-tag ${course.rankClass}">◈ ${course.rank.toUpperCase()}</span>
+      <div class="topic-progress-wrap">
+        <div class="topic-progress-header">
+          <span class="topic-progress-label">Progress</span>
+          <span class="topic-progress-count">${completed} / ${total}</span>
+        </div>
+        <div class="topic-progress-track">
+          <div class="topic-progress-fill" style="width: 0%"
+               data-target="${percentage}%">
+          </div>
+        </div>
+      </div>
+      <a href="topic.html?course=${course.id}"
+         class="btn-primary btn-sm">
+        Enter World →
+      </a>
+    `;
+
+        grid.appendChild(card);
+    });
+
+    // Generate coming soon cards
+    SHADOWFORGE_DATA.comingSoon.forEach(course => {
+        const card = document.createElement('div');
+        card.className = 'course-card coming-soon';
+        card.setAttribute('data-course-id', course.id);
+
+        card.innerHTML = `
+      <h3>${course.icon} ${course.name}</h3>
+      <span class="badge-coming-soon">⏳ Coming Soon</span>
+    `;
+
+        grid.appendChild(card);
+    });
+
+    // Animate progress bars after cards are added
+    setTimeout(() => {
+        document.querySelectorAll('.topic-progress-fill').forEach(bar => {
+            const target = bar.getAttribute('data-target');
+            bar.style.transition = 'width 1s ease';
+            bar.style.width = target;
+        });
+    }, 600);
+
+    console.log(`✅ Generated ${SHADOWFORGE_DATA.courses.length} course cards`);
+}
+
+/* ────────────────────────────────────────
+   FUNCTION: generateTopicMap
+   Builds the topic journey map from data
+──────────────────────────────────────── */
+function generateTopicMap(courseId) {
+    const topicPath = document.querySelector('.topic-path');
+    if (!topicPath) return;
+
+    const course = getCourse(courseId);
+    if (!course) return;
+
+    // Clear existing hardcoded nodes
+    topicPath.innerHTML = '';
+
+    course.topics.forEach((topic, index) => {
+
+        // Create node wrapper
+        const nodeWrap = document.createElement('div');
+        nodeWrap.className = 'topic-node-wrap';
+
+        // Determine node state
+        const nodeClass = topic.status === 'completed'
+            ? 'completed-node'
+            : topic.status === 'active'
+                ? 'active-node'
+                : 'locked-node';
+
+        const nodeIcon = topic.status === 'completed'
+            ? '<div class="node-icon done">✅</div>'
+            : topic.status === 'active'
+                ? '<div class="node-icon active">🔥</div>'
+                : '<div class="node-icon locked">🔒</div>';
+
+        const nodeMeta = topic.status === 'completed'
+            ? `Completed · ${topic.xpEarned} XP earned`
+            : topic.status === 'active'
+                ? 'Active — Continue here'
+                : index > 0
+                    ? `Complete ${course.topics[index - 1].title} first`
+                    : 'Locked';
+
+        // Build node HTML
+        nodeWrap.innerHTML = `
+      <div class="topic-node ${nodeClass}"
+           data-topic-id="${topic.id}"
+           data-course-id="${courseId}">
+        ${nodeIcon}
+        <div class="node-info">
+          <div class="node-title">${topic.title}</div>
+          <div class="node-meta">${nodeMeta}</div>
+        </div>
+        <div class="node-xp">+${topic.xpReward}</div>
+      </div>
+    `;
+
+        topicPath.appendChild(nodeWrap);
+
+        // Add connector between nodes — not after last node
+        if (index < course.topics.length - 1) {
+            const connector = document.createElement('div');
+            connector.className = topic.status === 'completed'
+                ? 'connector'
+                : 'connector locked';
+            topicPath.appendChild(connector);
+        }
+
+    });
+
+    // Add click events to active nodes
+    document.querySelectorAll('.topic-node.active-node').forEach(node => {
+        node.style.cursor = 'pointer';
+        node.addEventListener('click', () => {
+            const topicId = node.getAttribute('data-topic-id');
+            const courseId = node.getAttribute('data-course-id');
+            console.log(`Opening topic: ${topicId} from ${courseId}`);
+            // In React this will navigate to the topic page
+            // For now just log it
+        });
+    });
+
+    // Update subject header stats
+    updateSubjectStats(courseId);
+
+    console.log(`✅ Generated topic map for ${course.name}`);
+}
+
+/* ────────────────────────────────────────
+   FUNCTION: updateSubjectStats
+   Updates the completed/active/
+    counts
+──────────────────────────────────────── */
+function updateSubjectStats(courseId) {
+    const course = getCourse(courseId);
+    if (!course) return;
+
+    const completed = course.topics.filter(
+        t => t.status === 'completed'
+    ).length;
+
+    const active = course.topics.filter(
+        t => t.status === 'active'
+    ).length;
+
+    const locked = course.topics.filter(
+        t => t.status === 'locked'
+    ).length;
+
+    // Update stat items if they exist on the page
+    const statItems = document.querySelectorAll('.stat-item');
+    if (statItems.length >= 3) {
+        statItems[0].innerHTML = `
+      <div class="stat-dot"
+           style="background:var(--neon-green)">
+      </div>
+      ${completed} Completed
+    `;
+        statItems[1].innerHTML = `
+      <div class="stat-dot"
+           style="background:var(--neon-cyan)">
+      </div>
+      ${active} Active
+    `;
+        statItems[2].innerHTML = `
+      <div class="stat-dot"
+           style="background:var(--text-dim)">
+      </div>
+      ${locked} Locked
+    `;
+    }
+}
+
+/* ────────────────────────────────────────
+   FUNCTION: updateDashboardStats
+   Updates the stats grid on dashboard
+──────────────────────────────────────── */
+function updateDashboardStats() {
+    const statCards = document.querySelectorAll('.stat-card');
+
+    statCards.forEach(card => {
+        const icon = card.querySelector('.stat-card-icon');
+        const value = card.querySelector('.stat-card-value');
+
+        if (!icon || !value) return;
+
+        switch (icon.textContent) {
+            case '⚡':
+                value.textContent = studentData.xp.toLocaleString();
+                break;
+            case '🔥':
+                value.textContent = studentData.streak;
+                break;
+            case '📚':
+                value.textContent = getTotalCompletedTopics();
+                break;
+            case '🏆':
+                value.textContent = '#1';
+                break;
+        }
+    });
+}
+
+/* ────────────────────────────────────────
+   INITIALISE DYNAMIC CONTENT
+   Called when page loads
+──────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', () => {
+
+    // Dashboard page
+    if (document.querySelector('.courses-grid')) {
+        generateCourseCards();
+        updateDashboardStats();
+    }
+
+    // Topic page
+    if (document.querySelector('.topic-path')) {
+        generateTopicMap('microeconomics');
+    }
+
+});
