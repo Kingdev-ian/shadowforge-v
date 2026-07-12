@@ -1606,3 +1606,184 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+
+
+/* ============================================
+   LOCAL STORAGE SAVE SYSTEM
+   Day 30 — Persist progress between sessions
+   ============================================ */
+
+const STORAGE_KEYS = {
+    student: 'shadowforge_student',
+    courses: 'shadowforge_courses',
+    settings: 'shadowforge_settings'
+};
+
+/* ────────────────────────────────────────
+   FUNCTION: saveProgress
+   Saves all student data to local storage
+──────────────────────────────────────── */
+function saveProgress() {
+    try {
+        // Save student data
+        localStorage.setItem(
+            STORAGE_KEYS.student,
+            JSON.stringify(studentData)
+        );
+
+        // Save course progress
+        localStorage.setItem(
+            STORAGE_KEYS.courses,
+            JSON.stringify(SHADOWFORGE_DATA.courses)
+        );
+
+        console.log('💾 Progress saved');
+    } catch (error) {
+        console.error('Failed to save progress:', error);
+    }
+}
+
+/* ────────────────────────────────────────
+   FUNCTION: loadProgress
+   Loads saved data from local storage
+──────────────────────────────────────── */
+function loadProgress() {
+    try {
+        // Load student data
+        const savedStudent = localStorage.getItem(STORAGE_KEYS.student);
+        if (savedStudent) {
+            const parsed = JSON.parse(savedStudent);
+            Object.assign(studentData, parsed);
+            console.log('📂 Student data loaded:', studentData);
+        }
+
+        // Load course progress
+        const savedCourses = localStorage.getItem(STORAGE_KEYS.courses);
+        if (savedCourses) {
+            const parsed = JSON.parse(savedCourses);
+            parsed.forEach((savedCourse, index) => {
+                if (SHADOWFORGE_DATA.courses[index]) {
+                    SHADOWFORGE_DATA.courses[index].topics =
+                        savedCourse.topics;
+                }
+            });
+            console.log('📂 Course progress loaded');
+        }
+
+    } catch (error) {
+        console.error('Failed to load progress:', error);
+    }
+}
+
+/* ────────────────────────────────────────
+   FUNCTION: clearProgress
+   Resets all saved data — for testing
+──────────────────────────────────────── */
+function clearProgress() {
+    localStorage.removeItem(STORAGE_KEYS.student);
+    localStorage.removeItem(STORAGE_KEYS.courses);
+    console.log('🗑️ Progress cleared — refreshing...');
+    location.reload();
+}
+
+/* ────────────────────────────────────────
+   FUNCTION: getLastSaved
+   Returns when progress was last saved
+
+   
+   */
+function getLastSaved() {
+    const saved = localStorage.getItem(STORAGE_KEYS.student);
+    if (!saved) return 'Never';
+
+    const data = JSON.parse(saved);
+    return data.lastSaved
+        ? new Date(data.lastSaved).toLocaleString()
+        : 'Unknown';
+}
+
+/* ────────────────────────────────────────
+   AUTO-SAVE
+   Saves whenever XP changes or topic
+   is completed
+──────────────────────────────────────── */
+
+// Wrap the existing addXP function to auto-save
+const originalAddXP = addXP;
+function addXP(amount, reason) {
+    const result = originalAddXP(amount, reason);
+    studentData.lastSaved = new Date().toISOString();
+    saveProgress();
+    return result;
+}
+
+// Wrap completeTopic to auto-save
+const originalCompleteTopic = completeTopic;
+function completeTopic(courseId, topicId) {
+    originalCompleteTopic(courseId, topicId);
+    saveProgress();
+}
+
+/* ────────────────────────────────────────
+   STREAK SYSTEM
+   Checks if student logged in today
+   and updates streak
+──────────────────────────────────────── */
+function checkAndUpdateStreak() {
+    const today = new Date().toDateString();
+    const lastLogin = studentData.lastLoginDate;
+
+    if (!lastLogin) {
+        // First ever login
+        studentData.lastLoginDate = today;
+        studentData.streak = 1;
+        saveProgress();
+        return;
+    }
+
+    if (lastLogin === today) {
+        // Already logged in today — no change
+        console.log(`🔥 Streak active: ${studentData.streak} days`);
+        return;
+    }
+
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    const yesterdayString = yesterday.toDateString();
+
+    if (lastLogin === yesterdayString) {
+        // Logged in yesterday — increment streak
+        studentData.streak += 1;
+        if (studentData.streak > studentData.bestStreak) {
+            studentData.bestStreak = studentData.streak;
+        }
+        console.log(`🔥 Streak extended: ${studentData.streak} days`);
+    } else {
+        // Missed a day — reset streak
+        studentData.streak = 1;
+        console.log('💔 Streak reset — missed a day');
+    }
+
+    studentData.lastLoginDate = today;
+    saveProgress();
+    updateStreakDisplay();
+}
+
+/* ────────────────────────────────────────
+   INITIALISE SAVE SYSTEM
+──────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', () => {
+
+    // Load saved progress first
+    loadProgress();
+
+    // Check streak
+    checkAndUpdateStreak();
+
+    // Update all displays with loaded data
+    updateXPDisplay();
+    updateStreakDisplay();
+
+    console.log(`💾 Last saved: ${getLastSaved()}`);
+
+});
