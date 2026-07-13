@@ -1709,19 +1709,50 @@ function getLastSaved() {
 ──────────────────────────────────────── */
 
 // Wrap the existing addXP function to auto-save
-const originalAddXP = addXP;
-function addXP(amount, reason) {
-    const result = originalAddXP(amount, reason);
+function addXP(amount, reason = 'Completed activity') {
+    const oldRank = getRank(studentData.xp);
+    studentData.xp += amount;
+    const newRank = getRank(studentData.xp);
+
+    console.log(`⚡ +${amount} XP — ${reason}`);
+
+    if (newRank.name !== oldRank.name) {
+        console.log(`🏆 RANK UP! ${oldRank.name} → ${newRank.name}`);
+        showRankUpBanner(newRank);
+    }
+
+    updateXPDisplay();
+    showXPToast(amount);
+
+    // Save directly here — no wrapper needed
     studentData.lastSaved = new Date().toISOString();
     saveProgress();
-    return result;
+
+    return studentData.xp;
 }
 
 // Wrap completeTopic to auto-save
-const originalCompleteTopic = completeTopic;
 function completeTopic(courseId, topicId) {
-    originalCompleteTopic(courseId, topicId);
+    const course = getCourse(courseId);
+    if (!course) return;
+
+    const topicIndex = course.topics.findIndex(t => t.id === topicId);
+    if (topicIndex === -1) return;
+
+    course.topics[topicIndex].status = 'completed';
+    course.topics[topicIndex].xpEarned = course.topics[topicIndex].xpReward;
+
+    if (topicIndex + 1 < course.topics.length) {
+        course.topics[topicIndex + 1].status = 'active';
+    }
+
+    const xpEarned = course.topics[topicIndex].xpReward;
+    addXP(xpEarned, `Completed: ${course.topics[topicIndex].title}`);
+
+    // Save directly here — no wrapper needed
     saveProgress();
+
+    console.log(`✅ Topic complete: ${course.topics[topicIndex].title}`);
 }
 
 /* ────────────────────────────────────────
@@ -1787,3 +1818,6 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log(`💾 Last saved: ${getLastSaved()}`);
 
 });
+
+
+
